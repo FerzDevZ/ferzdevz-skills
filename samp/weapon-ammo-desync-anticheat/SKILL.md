@@ -51,6 +51,8 @@ stock LoadWeaponLimits()
     return 1;
 }
 
+forward GetWeaponSlotFor(weaponid);       // project helper: weapon id -> inventory slot, -1 when untracked
+
 public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
     new slot = GetWeaponSlotFor(_:weaponid);

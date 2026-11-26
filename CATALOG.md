@@ -96,7 +96,7 @@
 - `transaction-rollback-economy` - Use when money must move atomically or roll back. *(160 lines)*
 - `vehicle-damage-part-sync` - Use when panel, door or tyre damage is lost on respawn. *(146 lines)*
 - `vehicle-data-persistence` - Use when vehicles reset or duplicate after restart. *(160 lines)*
-- `weapon-ammo-desync-anticheat` - Use when clients claim weapons or ammo they do not own. *(160 lines)*
+- `weapon-ammo-desync-anticheat` - Use when clients claim weapons or ammo they do not own. *(162 lines)*
 - `ysi-y-hooks-modularization` - Use when one callback must run from several modules. *(115 lines)*
 - `ysi-y-timers-task-system` - Use when raw SetTimerEx ids leak or fight per player. *(129 lines)*
-- `zero-downtime-gmx-restart` - Use when gmx must reload the mode without a kick. *(152 lines)*
+- `zero-downtime-gmx-restart` - Use when gmx must reload the mode without a kick. *(154 lines)*

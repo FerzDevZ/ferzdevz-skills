@@ -41,7 +41,7 @@ new gHunger[MAX_PLAYERS];
 
 task WeatherTick[600000]()                 // global, one instance, forever
 {
-    SetWeather(GetRandomWeather());
+    SetWeather(random(20));                // 0..19 are the valid weather ids
     return 1;
 }
 

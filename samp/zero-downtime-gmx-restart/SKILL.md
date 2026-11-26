@@ -76,6 +76,8 @@ public DoRestart()
    and nowhere else, or the reload duplicates it:
 
 ```pawn
+forward CreateServerObjects();   // project helper: the single object-creation entry point
+
 public OnGameModeInit()
 {
     Iter_Init(PlayerVehicles);   // foreach containers are script state and start empty again
