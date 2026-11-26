@@ -73,8 +73,32 @@ python3 bin/audit.py --root . --net           # dead sources
 ```
 
 6. When a skill fails depth, do not pad it. Load `skill-depth-upgrade` and add a
-   third failure row that comes from a real incident, plus the command that
-   detects it. Depth that is not evidence is noise.
+   third failure row that comes from a real incident, plus the command that detects it.
+   Depth that is not evidence is noise.
+
+7. Read the pack as a portfolio, once per wave, not per file. Four numbers decide the
+   next move:
+
+```bash
+python3 bin/audit.py --root . --json | python3 -c "import json,sys,collections; \
+d=json.load(sys.stdin); b=collections.Counter('under100' if s['lines']<100 else 'ok' for s in d['skills']); print(b)"
+python3 bin/route_audit.py --json | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d['collisions']),'collisions')"
+python3 bin/check_claims.py --json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['fail'],'failed claims')"
+python3 bin/doctor.py | tail -1
+```
+
+| Signal | Healthy | Next move |
+| --- | --- | --- |
+| skills under 100 lines | 0-2 | rewrite the worst one, do not add a new skill |
+| description collisions | 0 | fix the narrower description, never delete a skill to silence it |
+| failed claims | 0 | update the number or write the check command instead |
+| doctor | OK | if it is not OK, stop adding skills until it is |
+
+8. Snapshot the verdict so the next session does not re-derive it:
+
+```bash
+python3 bin/audit.py --root . > /tmp/audit.txt 2>&1; tail -5 /tmp/audit.txt
+```
 
 ## Failure Modes & Fixes
 
