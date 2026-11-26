@@ -1,0 +1,29 @@
+{
+  "openmp_server": [
+    "1.6.7.3218",
+    "1.6.1",
+    "1.5.8.3079",
+    "1.4.0.2779",
+    "1.4.0",
+    "1.3.0",
+    "1.6.0"
+  ],
+  "pawncc": [
+    "3.10.10"
+  ],
+  "sampctl": [
+    "1.17.0",
+    "1.16.0"
+  ],
+  "streamer": [
+    "2.9.6"
+  ],
+  "mysql": [
+    "R41-4"
+  ],
+  "notes": "Versions a skill may cite. Add a new entry only after reading the release page.",
+  "textdraw_editor_ntd": [
+    "6.1.1",
+    "6.1"
+  ]
+}

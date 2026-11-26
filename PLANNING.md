@@ -115,6 +115,20 @@ Dokumen ini adalah kontrak. Skill yang tidak memenuhi gate di bagian 6 tidak mas
 | skill-depth-upgrade | Naikkan stub jadi skill penuh tanpa mengarang |
 | skill-selection-evals | Buktikan skill benar-benar mengubah output agent |
 
+### samp (134, dua tingkat)
+Library SA-MP/open.mp diimpor dari `~/.hermes/skills/samp`. Semuanya berupa stub
+~32 baris tanpa tabel kegagalan dan sumber. Karena itu:
+
+- 40 skill prioritas di-upgrade ke kontrak penuh dan tinggal di `samp/<nama>/` (ikut gate + install).
+- 94 sisanya diparkir di `samp/_backlog/<nama>/` sampai di-upgrade; tidak diaudit, tidak di-install.
+- Status per skill: `samp/WORKLIST.md`.
+
+| Gelombang | Isi |
+| --- | --- |
+| S1 | TextDraw/UI, streamer/objek/interior, data/ekonomi, anticheat/network, build/ops, kendaraan/model, command/state/YSI, router/meta |
+| S2 | 47 skill backlog pertama |
+| S3 | 47 skill backlog terakhir |
+
 Total: 11 + 8 + 9 + 8 + 6 + 10 + 6 + 4 = 62. Target akhir 62 skill berkualitas, bukan 200 stub.
 
 ---

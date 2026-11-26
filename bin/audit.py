@@ -182,6 +182,7 @@ def main() -> int:
     here = pathlib.Path(__file__).resolve().parent.parent
     ap.add_argument("--root", default=str(here))
     ap.add_argument("--only", default="", help="only audit categories matching this prefix")
+    ap.add_argument("--names", default="", help="comma-separated skill names to audit")
     ap.add_argument("--min-body", type=int, default=60)
     ap.add_argument("--min-sources", type=int, default=2)
     ap.add_argument("--net", action="store_true")
@@ -194,6 +195,9 @@ def main() -> int:
     if args.only:
         files = [p for p in files if p.parent.parent.name == args.only
                  or p.parent.parent.name.startswith(args.only)]
+    if args.names:
+        wanted = {n.strip() for n in args.names.split(",") if n.strip()}
+        files = [p for p in files if p.parent.name in wanted]
     if not files:
         print(f"no skills found under {root}/*/*/SKILL.md")
         return 1
