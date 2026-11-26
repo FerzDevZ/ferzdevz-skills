@@ -1,7 +1,7 @@
 ---
 name: skill-router
 description: Use when unsure which pack skill applies. Route by symptom.
-version: "2026.1.0"
+version: "2026.1.1"
 metadata:
   hermes:
     tags: [meta, routing, skills, index]
@@ -10,7 +10,7 @@ metadata:
 
 # Route a symptom to one skill
 
-With 165 skills, the expensive mistake is not missing knowledge, it is loading the
+With 183 skills, the expensive mistake is not missing knowledge, it is loading the
 wrong file or two files that disagree. This router turns a symptom into exactly one
 skill name. Load that skill, follow its Verification, and only then add a second one.
 
@@ -28,7 +28,7 @@ skill name. Load that skill, follow its Verification, and only then add a second
 
 | Component | Version | Note |
 | --- | --- | --- |
-| Pack layout | `<category>/<skill>/SKILL.md` | 9 categories, 165 skills |
+| Pack layout | `<category>/<skill>/SKILL.md` | 11 categories, 183 skills |
 | Discovery | name + description only | routing quality = description quality |
 | Router audit | `bin/route_audit.py` | collision + generic-description detector |
 | Catalog | `CATALOG.md` | generated; the full list with line counts |
@@ -102,7 +102,7 @@ python3 bin/route_audit.py --json | head -40
 | Correct skill loaded, answer still wrong | its Verification was skipped | run the command in the skill's Verification section |
 | No skill ever matches a recurring task | the description lacks the user's words | edit the description, then rerun `bin/route_audit.py` |
 | Router table names a skill that does not exist | table written by hand after a rename | check the name against `CATALOG.md` / `ls <category>` |
-| 165 skills feel slow to search | catalog not regenerated | `python3 bin/catalog.py` then grep it |
+| 183 skills feel slow to search | catalog not regenerated | `python3 bin/catalog.py` then grep it |
 | Pack feels like a dump again | no collision gate in CI | add `bin/route_audit.py --fail-on-dupes` to CI |
 
 ## Verification

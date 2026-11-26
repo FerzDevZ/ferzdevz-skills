@@ -152,7 +152,7 @@
 - `samp-dev-router` - Use when SA-MP work needs the right skill routed. *(128 lines)*
 - `samp-map-editor-pipelines` - Use when map editor output must become streamed server code. *(147 lines)*
 - `samp-model-selection-ui` - Use when a skin or vehicle picker needs real previews. *(159 lines)*
-- `samp-skill-authoring` - Use when a samp skill must pass the pack gates. *(150 lines)*
+- `samp-skill-authoring` - Use when a samp skill must pass the pack gates. *(149 lines)*
 - `samp-third-party-anticheat-integration` - Use when a second anticheat must not double-ban. *(160 lines)*
 - `samp-voice-bridge` - Use when adding proximity or radio voice to a server. *(159 lines)*
 - `sampctl-package-manager` - Use when includes drift from the manifest. *(151 lines)*

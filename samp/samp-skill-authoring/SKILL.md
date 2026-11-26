@@ -155,5 +155,4 @@ net: checked 3 unique source URL(s)
 - https://open.mp/docs/changelog
 - https://github.com/openmultiplayer/omp-stdlib
 
-For pack-wide tooling (auditor design, install, CI wiring) rather than one SA-MP skill, the
-`skill-pack-engineering` skill owns it.
+For pack-wide tooling (auditor design, install, CI wiring, export), see `bin/` scripts and `meta/skill-library-auditor` in this repo.

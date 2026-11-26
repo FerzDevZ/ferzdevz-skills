@@ -4,13 +4,13 @@ Skill pack untuk Hermes Agent (dan agent lain yang mendukung format Agent Skills
 `SKILL.md`). Isinya keputusan teknis yang mahal kalau salah — bukan tutorial panjang.
 
 Cakupan: web development, web design, UI/UX & accessibility, mobile development,
-mobile design, machine learning & LLM, ops, SA-MP/open.mp game development, dan
-meta-tooling untuk merawat pack ini.
+mobile design, machine learning & LLM, ops, productivity, SA-MP/open.mp game
+development, SA-MP client C++, dan meta-tooling untuk merawat pack ini.
 
 ## Status
 
-- 165 skill terbit, 9 kategori: web-dev, web-design, ui-ux, mobile-dev, mobile-design, ml, samp, ops, meta.
-- 134 skill SA-MP/open.mp sudah lulus kontrak penuh; `samp/_backlog/` kosong.
+- 183 skill terbit, 11 kategori: web-dev, web-design, ui-ux, mobile-dev, mobile-design, ml, ops, productivity, samp, samp-client, meta.
+- 134 skill SA-MP/open.mp ada di `samp/`; 3 skill klien C++ ada di `samp-client/`.
 - Setiap skill wajib lulus gate struktur, kedalaman tabel kegagalan, sumber hidup, dan allowlist native.
 - `CATALOG.md` dihasilkan otomatis; jangan diedit tangan.
 
@@ -19,76 +19,70 @@ meta-tooling untuk merawat pack ini.
 ```
 web-dev/        Next.js, TypeScript, API, performa, auth, Postgres
 web-design/     design token, warna, tipografi, API komponen
-ui-ux/          riset, usability, form, empty state, WCAG 2.2
-mobile-dev/     Flutter, React Native, Android/iOS release, offline sync
-mobile-design/  HIG vs Material 3, navigasi, touch target, layout adaptif
-ml/             framing, RAG, evaluasi, context engineering
-samp/           SA-MP/open.mp: TextDraw, streamer, data, anticheat, build, kendaraan, YSI
-samp-client/    klien C++: entity objek, wiring RPC menu
-ops/            Docker, CI gate, supply chain
-meta/           auditor pack, publish, depth upgrade, evals
+ui-ux/          aksesibilitas, form, state kosong/error, usability test
+mobile-dev/     Android, Flutter, React Native, offline sync
+mobile-design/  navigasi, tap target, layout adaptif, HIG vs M3
+ml/             framing, RAG, evaluasi, prompt injection, context LLM app
+ops/            CI, kontainer, observability, feature flag, Kafka, k6, dbt
+productivity/   PRD & scope cut
+samp/           open.mp/Pawn: auth, database, sync, anticheat, streamer, YSI
+samp-client/    klien SA-MP C++: RPC handler, object lifecycle, menu RPC
+meta/           audit library, router, eval, depth upgrade
+bin/            audit, catalog, doctor, eval, export, install, routing check
+evals/          case evaluasi skill dan routing
+.github/        CI gate
 ```
 
-Satu skill = satu folder:
-
-```
-<kategori>/<nama-skill>/
-  SKILL.md        # wajib
-  scripts/        # opsional, stdlib-only
-  references/     # opsional
-  assets/         # opsional
-```
-
-## Install ke Hermes
+## Pakai dengan Hermes
 
 ```bash
-./bin/install.sh --dry-run      # lihat apa yang akan disalin
-./bin/install.sh                # copy ke ~/.hermes/skills/<kategori>/
-./bin/install.sh --dest /path   # profil lain
+git clone https://github.com/ferzdevz/ferzdevz-skills.git ~/ferzdevz-skills
+~/ferzdevz-skills/bin/install.sh --backup   # salin ke ~/.hermes/skills + backup
+# restart Hermes agar indeks skill dimuat ulang
 ```
 
-Script menjalankan audit dulu dan berhenti kalau ada skill yang gagal.
+`install.sh` menjalankan audit dulu dan berhenti kalau ada skill yang gagal gate.
 
-## Pakai di agent lain
+## Pakai dengan agent lain (Agent Skills / SKILL.md)
 
-Formatnya standar Agent Skills: satu folder berisi `SKILL.md`. Agent lain tidak butuh
-`bin/`, cukup foldernya.
+Format skill di pack ini mengikuti konvensi Agent Skills: satu folder per skill,
+file `SKILL.md` dengan frontmatter `name` + `description`.
 
 ```bash
-# Claude Code / Codex style skill directories
-mkdir -p .claude/skills && cp -r web-dev/nextjs-app-router-production .claude/skills/
-# atau
-mkdir -p .agents/skills && cp -r ml/rag-evaluation-harness .agents/skills/
+# Claude Code (project-local)
+mkdir -p .claude/skills
+cp -r ~/ferzdevz-skills/web-dev/* .claude/skills/
+
+# Atau symlink satu kategori
+ln -s ~/ferzdevz-skills/samp .claude/skills/samp
 ```
 
-Kalau agent tersebut hanya membaca satu direktori skill, salin `<kategori>/<skill>/`
-tanpa struktur kategori.
+Untuk agent yang hanya membaca satu direktori datar, salin isi kategori, bukan
+folder kategori itu sendiri (setiap skill harus menjadi anak langsung dari
+direktori skills agent).
 
-## Gate
+## Cek kualitas
 
 ```bash
-python3 bin/audit.py --root .            # struktur, kedalaman, duplikat
-python3 bin/audit.py --root . --net      # + cek semua URL sumber
-python3 bin/catalog.py                   # regenerate CATALOG.md
-python3 bin/catalog.py --check           # CI: gagal kalau katalog basi
-python3 bin/eval.py lint                 # case eval valid (grader, regex, prompt)
-python3 bin/route_audit.py               # tabrakan deskripsi + deskripsi terlalu generik
-python3 bin/route_check.py               # 50 prompt nyata -> skill yang diharapkan (recall)
-python3 bin/usage_report.py --days 30    # skill mana yang benar-benar dimuat dari state.db
-python3 bin/check_claims.py              # klaim versi library vs registry (npm/PyPI/GitHub/Docker)
-python3 bin/doctor.py                    # profil vs pack: duplikat, pohon bersarang, skill hilang
-bash bin/eval_arm.sh with --dir <work> --prompt <prompt>   # arm terisolasi, profil tidak disentuh
-bash bin/eval_arm.sh without --dir <work> --prompt <prompt>
-python3 bin/eval.py score --case nextjs-dynamic-layout --dir <jawaban> --compare <jawaban-lain>
-bash bin/install.sh --dry-run
+python3 bin/audit.py --root .            # struktur + kedalaman
+python3 bin/audit.py --root . --net      # + cek URL sumber hidup
+python3 bin/check_natives.py --root .    # native SA-MP/open.mp sesuai allowlist
+python3 bin/catalog.py --check           # CATALOG.md masih segar
+python3 bin/route_audit.py --fail-on-dupes
+python3 bin/doctor.py --profile . --repo .
+python3 bin/eval.py lint                 # case evaluasi valid
 ```
 
-Aturan yang ditegakkan:
+Semua perintah di atas juga dijalankan di GitHub Actions (`.github/workflows/validate.yml`).
 
-| Gate | Ambang |
+## Kontrak skill
+
+Setiap `*/SKILL.md` wajib punya frontmatter YAML dan bagian berikut:
+
+| Gate | Aturan |
 | --- | --- |
 | frontmatter | `name` == nama folder, `description` <= 60 karakter |
-| section | When to Use, Compatibility, Implementation, Failure Modes, Verification, Sources |
+| section | When to Use, Compatibility/Stack, Implementation, Failure Modes, Verification, Sources |
 | kedalaman | >= 60 baris isi (target 100-160) |
 | tabel | Failure Modes >= 3 baris data, Compatibility berupa tabel |
 | sumber | >= 2 URL, dan hidup saat `--net` |
@@ -96,8 +90,8 @@ Aturan yang ditegakkan:
 
 ## Menambah skill
 
-1. `mkdir -p <kategori>/<nama> && cp TEMPLATE.md ...` lalu isi.
-2. Isi 5 bagian, jangan ada TODO.
+1. `mkdir -p <kategori>/<nama> && cp TEMPLATE.md <kategori>/<nama>/SKILL.md` lalu isi.
+2. Isi semua bagian wajib, jangan ada TODO.
 3. `python3 bin/audit.py --root . --only <kategori> --net`
 4. `python3 bin/catalog.py`
 5. Commit. CI menjalankan gate yang sama.
