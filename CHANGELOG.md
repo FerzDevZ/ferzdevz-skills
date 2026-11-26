@@ -3,6 +3,15 @@
 Format: satu bagian per tag rilis, dikutip dari workflow `release`.
 Skill bertambah = versi minor; perbaikan gate/teks = patch.
 
+## v1.4.0
+
+- `bin/export_pack.py`: ekspor tree datar (`dist/skills/<name>/`) + zip
+  `ferzdevz-skills-<versi>.zip` + `SHA256SUMS`, untuk agent yang hanya membaca satu
+  direktori skill.
+- Workflow rilis mengunggah zip dan checksum sebagai aset rilis.
+- `LICENSE` (MIT) dan `CHANGELOG.md` ditambahkan; `doctor.py` kini mengenali layout datar.
+- `bin/doctor.py` dipanggil otomatis setelah `install.sh` (tidak menimpa kegagalan install).
+
 ## v1.3.0
 
 - `bin/doctor.py`: cek pohon skill bersarang, nama duplikat, skill pack yang belum terpasang,
