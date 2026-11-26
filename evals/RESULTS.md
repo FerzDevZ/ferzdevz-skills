@@ -19,6 +19,7 @@ skill.
 | Tanggal | Case | Tanpa skill | Dengan skill | Delta | Catatan |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-26 | fake-kill-shield | 4/4, 100% | 4/4, 100% | 0% | Model dasar sudah memakai `OnPlayerTakeDamage`, cek kepemilikan senjata, `return 0`, dan menyebut trust boundary RPC |
+| 2026-11-26 | money-concurrency | 5/5, 100% | 5/5, 100% | 0% | Setelah prompt mewajibkan "tulis file dulu", kedua arm menghasilkan file lengkap; keduanya memakai transaksi, lock, penanganan 1213/1205, ref idempoten, dan guard saldo |
 
 **Bacaan jujur:** pada case yang pengukurannya bersih, skill tidak menambah skor. Itu
 bukan bukti skill tidak berguna, tapi bukti dua hal:
@@ -87,11 +88,14 @@ Yang sekarang mencegahnya:
 
 ## 7. Sebaran run (jujur)
 
-Dari 8 run agent yang saya jalankan untuk case Pawn, 3 tidak menghasilkan file jawaban
-sama sekali: agent berhenti di "langkah berikutnya adalah menulis file". Prompt dan
-`--max-turns` (12 lalu 20) tidak menghilangkan gejalanya. Itu keterbatasan harness, bukan
-bukti tentang skill, jadi run tanpa file dicatat sebagai 0% dan tidak dipakai untuk
-menyimpulkan efek — cukup dicatat sebagai noise.
+Penyebab utama run tanpa file ternyata kalimat tugasnya: agent menghabiskan budget untuk
+menjelaskan rencana. Setelah setiap `prompt.md` ditambah satu baris ("Write the file(s)
+before explaining anything"), dua arm `money-concurrency` langsung menghasilkan file
+lengkap dan keduanya 100%. Sebelum perbaikan itu, 3 dari 8 run berhenti tanpa file.
+
+Sisa noise yang masih ada: satu run `nextjs-dynamic-layout` sempat menghasilkan solusi
+client-fetch yang sah tetapi tidak sesuai pola yang diminta; itu karena prompt, bukan
+karena skill, dan prompt-nya sudah diperjelas.
 
 ## 8. Cara mengulang
 
