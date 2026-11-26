@@ -26,7 +26,7 @@ reads, and blocks only in `MySQL_Run`.
 
 | Layer | 2026 baseline | Note |
 | --- | --- | --- |
-| Component | MySQL 0.3.1, `mysql.so` / `mysql.dll` | drop in `components/`; discovery is a folder scan, no key |
+| Component | open.mp MySQL component (0.3.1), `mysql.so` / `mysql.dll` | drop in `components/`; discovery is a folder scan, no key |
 | Legacy entry | `pawn.legacy_plugins: ["mysql"]` | remove it, it is a read-only startup key |
 | Include | `mysql.inc` → `qawno/include`, `#include <mysql>` | needs only open.mp natives; names do not collide with R41 |
 | Runtime deps | MariaDB Connector/C 3.4.11, yyjson, Argon2, OpenSSL 3 | linked in, so no extra file and no plugin |

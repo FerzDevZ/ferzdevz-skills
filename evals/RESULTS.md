@@ -48,7 +48,27 @@ Setelah itu `samp-legacy` dipindah keluar dari `~/.hermes/skills` (sekarang di
 - `textdraw-pool-budget`: grader budget menerima file `*.md` apa pun, bukan hanya
   `budget.md`.
 
-## 5. Cara mengulang
+## 5. Eksperimen tiga arm (money-concurrency, 2026-11-26)
+
+Satu case, tiga kondisi, satu run per kondisi, model sama:
+
+| Arm | Skor | Catatan |
+| --- | --- | --- |
+| Direktori skill dikosongkan total | 0/5, 0% | `transfer-fixed.pwn` tidak pernah dibuat; agent hanya menulis `verify/schema.sql` |
+| Hanya skill tetangga (skill `transaction-rollback-economy` disembunyikan) | 5/5, 100% | `money-duplication-prevention` dan skill ekonomi lain menutupi peran skill yang dihapus |
+| Pack penuh | 4/5, 78% | Gagal satu grader: tidak memakai `FOR UPDATE`, lock-nya lewat urutan `UPDATE` bertingkat |
+
+**Bacaan:** efek yang terukur ada di level "ada skill vs tidak ada skill", bukan
+"satu skill vs tetangganya". Pada pack padat, ablasi satu skill tidak bermakna karena
+skill lain di kategori yang sama memuat panduan yang sama. Karena itu:
+
+- Jangan mengklaim satu skill menyelamatkan sesuatu hanya dari uji satu-skill.
+- Untuk mengukur nilai pack, bandingkan direktori skill kosong vs terisi (arm 1 vs 3).
+- Skor pack penuh yang lebih rendah dari tetangga murni menunjukkan jawabannya panjang
+  dan menyimpang dari satu pola wajib; grader `FOR UPDATE` sebaiknya menerima urutan
+  lock eksplisit sebagai alternatif.
+
+## 6. Cara mengulang
 
 ```bash
 python3 bin/eval.py score --case fake-kill-shield \

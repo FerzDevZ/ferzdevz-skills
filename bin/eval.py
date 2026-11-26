@@ -66,18 +66,19 @@ def load_case(name: str) -> tuple[pathlib.Path, list[dict]]:
 
 
 def resolve_path(answer: pathlib.Path, pattern: str) -> pathlib.Path | None:
-    """Exact relative path first, then a glob (for agents that pick their own file name)."""
+    """Exact relative path first, then a glob: shallowest match wins, so an answer file
+    at the top of the work dir beats a copy inside node_modules/ or build/."""
     direct = answer / pattern
     if direct.is_file():
         return direct
-    matches = sorted(p for p in answer.rglob(pattern.split("/")[-1]) if p.is_file())
+    name = pattern.split("/")[-1]
+    matches = [p for p in answer.rglob(name) if p.is_file()]
     if not matches:
         return None
-    # prefer a match whose relative path ends with the pattern's tail segments
+    matches.sort(key=lambda p: (len(p.relative_to(answer).parts), str(p)))
     tail = [seg for seg in pattern.split("/") if seg not in ("**", "*")]
     for m in matches:
-        rel = m.relative_to(answer).as_posix()
-        if rel.endswith("/".join(tail)):
+        if m.relative_to(answer).as_posix().endswith("/".join(tail)):
             return m
     return matches[0]
 

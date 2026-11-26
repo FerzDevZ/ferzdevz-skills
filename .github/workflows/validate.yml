@@ -25,5 +25,7 @@ jobs:
         run: python3 bin/eval.py lint
       - name: routing descriptions do not collide
         run: python3 bin/route_audit.py --fail-on-dupes
+      - name: version claims match the registries
+        run: python3 bin/check_claims.py
       - name: install script is runnable
         run: bash bin/install.sh --dry-run

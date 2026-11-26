@@ -1,0 +1,54 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: gates before publishing
+        run: |
+          python3 bin/audit.py --root .
+          python3 bin/check_natives.py --root .
+          python3 bin/catalog.py --check
+          python3 bin/eval.py lint
+          python3 bin/route_audit.py --fail-on-dupes
+
+      - name: build release notes
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          PREV="$(git tag --sort=-v:refname | grep -v "^${TAG}$" | head -1 || true)"
+          {
+            echo "## ${TAG}"
+            echo
+            python3 bin/audit.py --root . | head -3
+            echo
+            echo "### Changes"
+            if [ -n "$PREV" ]; then
+              git log --no-merges --pretty='- %s' "${PREV}..HEAD"
+            else
+              git log --no-merges --pretty='- %s' HEAD
+            fi
+            echo
+            echo "### Gates"
+            echo "\`audit\`, \`check_natives\`, \`catalog\`, \`eval lint\`, \`route_audit\` all green on this commit."
+          } > RELEASE_NOTES.md
+          cat RELEASE_NOTES.md
+
+      - name: publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: RELEASE_NOTES.md
+          generate_release_notes: false
