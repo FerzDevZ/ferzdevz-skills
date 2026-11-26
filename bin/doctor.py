@@ -15,7 +15,17 @@ import sys
 
 
 def skill_dirs(root: pathlib.Path) -> list[pathlib.Path]:
-    return sorted(root.glob("*/*/SKILL.md"))
+    """Support both layouts: <category>/<skill>/SKILL.md and flat <skill>/SKILL.md."""
+    grouped = sorted(root.glob("*/*/SKILL.md"))
+    flat = sorted(p for p in root.glob("*/SKILL.md") if p.parent.name not in
+                  {q.parent.parent.name for q in grouped})
+    return sorted(grouped + flat)
+
+
+def category_of(p: pathlib.Path, root: pathlib.Path) -> str:
+    """Category for grouped layouts, '-' for a flat tree."""
+    parts = p.relative_to(root).parts
+    return parts[0] if len(parts) == 3 else "-"
 
 
 def main() -> int:
@@ -39,9 +49,9 @@ def main() -> int:
     inst_names = {p.parent.name for p in installed}
 
     print(f"profile: {profile}")
-    print(f"  skills: {len(installed)}  categories: {len({p.parent.parent.name for p in installed})}")
+    print(f"  skills: {len(installed)}  categories: {len({category_of(p, profile) for p in installed})}")
     print(f"repo:    {repo}")
-    print(f"  skills: {len(pack)}  categories: {len({p.parent.parent.name for p in pack})}")
+    print(f"  skills: {len(pack)}  categories: {len({category_of(p, repo) for p in pack})}")
 
     # 1. nested skills tree (a skills dir copied inside skills)
     nested = [d for d in profile.iterdir() if d.is_dir() and d.name.startswith(("skills", "samp-legacy"))]
@@ -55,7 +65,7 @@ def main() -> int:
     dupes = {n: c for n, c in counts.items() if c > 1}
     if dupes:
         for name, count in sorted(dupes.items()):
-            where = [str(p.parent.parent.name) for p in installed if p.parent.name == name]
+            where = [category_of(p, profile) for p in installed if p.parent.name == name]
             problems.append(f"duplicate skill name '{name}' x{count} in {', '.join(where)}")
 
     # 3. repo skills missing from the profile
@@ -65,7 +75,7 @@ def main() -> int:
                         + ", ".join(missing[:8]) + (" …" if len(missing) > 8 else ""))
 
     # 4. directories that look like skills but have no SKILL.md
-    for cat in sorted({p.parent.parent for p in installed}):
+    for cat in sorted({p.parent.parent for p in installed if category_of(p, profile) != "-"}):
         for d in sorted(cat.iterdir()):
             if d.is_dir() and not (d / "SKILL.md").is_file():
                 notes.append(f"directory without SKILL.md: {d.relative_to(profile)}")

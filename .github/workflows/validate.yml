@@ -29,5 +29,7 @@ jobs:
         run: python3 bin/check_claims.py
       - name: tree is self-consistent
         run: python3 bin/doctor.py --profile . --repo .
+      - name: pack exports cleanly
+        run: python3 bin/export_pack.py --version ci
       - name: install script is runnable
         run: bash bin/install.sh --dry-run
