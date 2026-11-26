@@ -21,5 +21,7 @@ jobs:
         run: python3 bin/audit.py --root . --net
       - name: catalog is current
         run: python3 bin/catalog.py --check
+      - name: eval cases are valid
+        run: python3 bin/eval.py lint
       - name: install script is runnable
         run: bash bin/install.sh --dry-run

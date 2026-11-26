@@ -56,6 +56,8 @@ python3 bin/audit.py --root .            # struktur, kedalaman, duplikat
 python3 bin/audit.py --root . --net      # + cek semua URL sumber
 python3 bin/catalog.py                   # regenerate CATALOG.md
 python3 bin/catalog.py --check           # CI: gagal kalau katalog basi
+python3 bin/eval.py lint                 # case eval valid (grader, regex, prompt)
+python3 bin/eval.py score --case nextjs-dynamic-layout --dir <jawaban> --compare <jawaban-lain>
 bash bin/install.sh --dry-run
 ```
 
