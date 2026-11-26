@@ -168,13 +168,20 @@ def http_ok(url: str) -> tuple[str, str]:
         headers={"User-Agent": "Mozilla/5.0 (skill-audit; +https://agentskills.io) "},
         method="GET",
     )
-    try:
-        with urllib.request.urlopen(req, timeout=8) as r:
-            return url, "ok" if 200 <= r.status < 300 else f"status {r.status}"
-    except urllib.error.HTTPError as e:
-        return url, "blocked(403/429)" if e.code in (403, 429) else f"status {e.code}"
-    except Exception as e:  # noqa: BLE001 - report any network failure as text
-        return url, f"error {type(e).__name__}"
+    last = ""
+    for _ in range(2):  # CI runners drop the first connection to some hosts
+        try:
+            with urllib.request.urlopen(req, timeout=12) as r:
+                return url, "ok" if 200 <= r.status < 300 else f"status {r.status}"
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429):
+                return url, "blocked(403/429)"
+            if e.code in (404, 410):
+                return url, f"status {e.code}"
+            last = f"status {e.code}"
+        except Exception as e:  # noqa: BLE001 - report any network failure as text
+            last = f"unreachable {type(e).__name__}"
+    return url, last
 
 
 def main() -> int:
@@ -215,13 +222,17 @@ def main() -> int:
                 dups.append(f"{a['name']} ~ {b['name']} (desc {ratio:.2f}, name {titleratio:.2f})")
 
     dead: list[tuple[str, str, str]] = []
+    flaky: list[tuple[str, str, str]] = []
     if args.net:
         all_urls = sorted({u for r in results for u in r["urls"]})
         with cf.ThreadPoolExecutor(max_workers=8) as pool:
             for url, state in pool.map(http_ok, all_urls):
-                if state.startswith(("status 404", "status 410", "error")):
+                if state.startswith(("status 404", "status 410")):
                     owners = [r["name"] for r in results if url in r["urls"]]
                     dead.append((url, state, ",".join(owners)))
+                elif state.startswith(("unreachable", "blocked", "status")):
+                    owners = [r["name"] for r in results if url in r["urls"]]
+                    flaky.append((url, state, ",".join(owners)))
 
     errors = [r for r in results if r["problems"]]
     cats: dict[str, int] = {}
@@ -229,7 +240,8 @@ def main() -> int:
         cats[r["category"]] = cats.get(r["category"], 0) + 1
 
     if args.json:
-        print(json.dumps({"skills": results, "duplicates": dups, "dead_urls": dead}, indent=1))
+        print(json.dumps({"skills": results, "duplicates": dups, "dead_urls": dead,
+                          "unverified_urls": flaky}, indent=1))
     else:
         print(f"skills: {len(results)}  categories: {len(cats)}  "
               f"lines: {sum(r['lines'] for r in results)}  "
@@ -251,9 +263,14 @@ def main() -> int:
             print(f"\nFAIL  {len(dead)} unreachable source URL(s)")
             for url, state, owners in dead:
                 print(f"  {state}  {url}  ({owners})")
+        if flaky:
+            print(f"\nWARN  {len(flaky)} source URL(s) could not be verified from this network")
+            for url, state, owners in flaky:
+                print(f"  {state}  {url}  ({owners})")
         if args.net:
             checked = len({u for r in results for u in r["urls"]})
-            print(f"\nnet: checked {checked} unique source URL(s)")
+            print(f"\nnet: checked {checked} unique source URL(s), "
+                  f"{len(dead)} dead, {len(flaky)} unverified")
 
     failed = bool(errors or dups or dead)
     if args.strict and not failed:
