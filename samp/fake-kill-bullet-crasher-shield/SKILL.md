@@ -1,6 +1,6 @@
 ---
 name: fake-kill-bullet-crasher-shield
-description: Use when fake kill or bullet crasher packets hit.
+description: Use when kills are claimed with no shooter or shot.
 version: "2026.1.0"
 metadata:
   hermes:

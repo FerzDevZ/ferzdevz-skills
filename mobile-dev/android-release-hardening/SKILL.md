@@ -1,6 +1,6 @@
 ---
 name: android-release-hardening
-description: Use when an Android release build must pass R8 and Play.
+description: Use when Play Console rejects an Android release build.
 version: "2026.1.0"
 metadata:
   hermes:

@@ -3,6 +3,18 @@
 Format: satu bagian per tag rilis, dikutip dari workflow `release`.
 Skill bertambah = versi minor; perbaikan gate/teks = patch.
 
+## v1.6.0
+
+- `bin/route_check.py` + `evals/routing.json`: 50 prompt nyata, recall@1 64% -> **80%**,
+  recall@3 82% -> **94%** setelah 16 deskripsi ditulis ulang dengan kata yang dipakai user.
+  CI menjalankan `--min-recall 0.75`.
+- `evals/ROUTING.md`: metode, tabel hasil, dan 10 miss yang dibiarkan beserta alasannya.
+- `bin/usage_report.py`: skill mana yang benar-benar dimuat, dibaca dari `state.db`
+  (30 hari terakhir: 30 lookup, 7 skill pack, 173 belum pernah).
+- `evals/DOGFOOD.md`: uji di `samp-client-ferzdevz`. Temuan: pack tidak punya skill untuk
+  lapisan render klien C++ (`CObjectPool`/`m_pEntity`), jadi gejala "objek server tidak
+  digambar" tidak bisa dijawab pack ini. Skill pengganti diusulkan, belum dibuat.
+
 ## v1.5.0
 
 - 180 skill, 10 kategori. Tambah: `testing-pyramid-and-contract-tests`,

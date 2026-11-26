@@ -73,6 +73,8 @@ python3 bin/catalog.py                   # regenerate CATALOG.md
 python3 bin/catalog.py --check           # CI: gagal kalau katalog basi
 python3 bin/eval.py lint                 # case eval valid (grader, regex, prompt)
 python3 bin/route_audit.py               # tabrakan deskripsi + deskripsi terlalu generik
+python3 bin/route_check.py               # 50 prompt nyata -> skill yang diharapkan (recall)
+python3 bin/usage_report.py --days 30    # skill mana yang benar-benar dimuat dari state.db
 python3 bin/check_claims.py              # klaim versi library vs registry (npm/PyPI/GitHub/Docker)
 python3 bin/doctor.py                    # profil vs pack: duplikat, pohon bersarang, skill hilang
 bash bin/eval_arm.sh with --dir <work> --prompt <prompt>   # arm terisolasi, profil tidak disentuh

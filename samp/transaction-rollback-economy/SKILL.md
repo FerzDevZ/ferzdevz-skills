@@ -1,6 +1,6 @@
 ---
 name: transaction-rollback-economy
-description: Use when money must move atomically or roll back.
+description: Use when concurrent writes duplicate or lose money.
 version: "2026.1.0"
 metadata:
   hermes:

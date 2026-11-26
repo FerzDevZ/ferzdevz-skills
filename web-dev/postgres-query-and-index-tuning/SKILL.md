@@ -1,6 +1,6 @@
 ---
 name: postgres-query-and-index-tuning
-description: Use when a Postgres query is slow at scale.
+description: Use when a Postgres query is slow or times out at scale.
 version: "2026.1.0"
 metadata:
   hermes:

@@ -1,6 +1,6 @@
 ---
 name: forms-ux-validation-patterns
-description: Use when building form validation and error states.
+description: Use when form errors appear after submit or confuse.
 version: "2026.1.0"
 metadata:
   hermes:

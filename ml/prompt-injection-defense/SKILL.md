@@ -1,6 +1,6 @@
 ---
 name: prompt-injection-defense
-description: Use when untrusted text reaches a model or tool.
+description: Use when retrieved docs or pages can steer the model.
 version: "2026.1.0"
 metadata:
   hermes:

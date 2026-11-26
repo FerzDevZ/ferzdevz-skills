@@ -1,6 +1,6 @@
 ---
 name: design-tokens-dtcg-pipeline
-description: Use when tokens must build CSS, Tailwind, iOS, Android
+description: Use when spacing or colour tokens drift across platforms.
 version: "2026.1.0"
 metadata:
   hermes:

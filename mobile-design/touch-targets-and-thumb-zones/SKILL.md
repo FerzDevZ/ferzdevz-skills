@@ -1,6 +1,6 @@
 ---
 name: touch-targets-and-thumb-zones
-description: Use when taps miss or buttons sit out of thumb reach.
+description: Use when taps miss small buttons out of thumb reach.
 version: "2026.1.0"
 metadata:
   hermes:

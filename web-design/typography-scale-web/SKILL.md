@@ -1,6 +1,6 @@
 ---
 name: typography-scale-web
-description: Use when type sizes are ad hoc or shift on font load
+description: Use when headings jump or the webfont shifts layout.
 version: "2026.1.0"
 metadata:
   hermes:

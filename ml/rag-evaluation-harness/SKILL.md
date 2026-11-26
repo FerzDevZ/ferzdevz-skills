@@ -1,6 +1,6 @@
 ---
 name: rag-evaluation-harness
-description: Use when a RAG change needs a CI regression gate.
+description: Use when reviewers ask if a RAG change is better.
 version: "2026.1.0"
 metadata:
   hermes:

@@ -1,6 +1,6 @@
 ---
 name: auth-session-cookie-hardening
-description: Use when designing cookie sessions or OAuth login.
+description: Use when sessions drop, CSRF fails or refresh leaks.
 version: "2026.1.0"
 metadata:
   hermes:

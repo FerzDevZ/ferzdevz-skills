@@ -1,6 +1,6 @@
 ---
 name: i18n-l10n-web
-description: Use when UI strings or RTL break in a second locale.
+description: Use when strings, plurals or RTL break in another locale.
 version: "2026.1.0"
 metadata:
   hermes:

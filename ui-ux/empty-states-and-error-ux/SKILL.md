@@ -1,6 +1,6 @@
 ---
 name: empty-states-and-error-ux
-description: Use when a UI needs empty, loading or error states.
+description: Use when an empty list or error state shows nothing.
 version: "2026.1.0"
 metadata:
   hermes:

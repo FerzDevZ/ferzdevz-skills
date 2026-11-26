@@ -1,6 +1,6 @@
 ---
 name: textdraw-clickable-hitbox-math
-description: Use when clicks miss the visual TextDraw button.
+description: Use when TextDraw clicks land in the wrong place.
 version: "2026.1.0"
 metadata:
   hermes:

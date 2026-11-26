@@ -5,14 +5,14 @@
 
 ## Web development (12)
 
-- `analytics-event-taxonomy` - Use when event names and properties drift per team. *(156 lines)*
+- `analytics-event-taxonomy` - Use when event names or properties differ per team. *(156 lines)*
 - `api-versioning-rest-graphql` - Use when an API change must not break old clients. *(158 lines)*
 - `appsec-threat-model-asvs` - Use when a feature ships with no threat model. *(170 lines)*
-- `auth-session-cookie-hardening` - Use when designing cookie sessions or OAuth login. *(159 lines)*
-- `i18n-l10n-web` - Use when UI strings or RTL break in a second locale. *(159 lines)*
+- `auth-session-cookie-hardening` - Use when sessions drop, CSRF fails or refresh leaks. *(159 lines)*
+- `i18n-l10n-web` - Use when strings, plurals or RTL break in another locale. *(159 lines)*
 - `nextjs-app-router-production` - Use when Next.js App Router pages are slow or stale. *(160 lines)*
 - `payments-idempotency-webhook` - Use when payment webhooks double-charge or go missing. *(160 lines)*
-- `postgres-query-and-index-tuning` - Use when a Postgres query is slow at scale. *(155 lines)*
+- `postgres-query-and-index-tuning` - Use when a Postgres query is slow or times out at scale. *(155 lines)*
 - `testing-pyramid-and-contract-tests` - Use when e2e grows and unit tests disappear. *(169 lines)*
 - `typescript-strict-project-setup` - Use when a TS repo needs a strict, fast type gate. *(160 lines)*
 - `web-performance-core-vitals` - Use when LCP, INP or CLS regress at p75. *(148 lines)*
@@ -22,19 +22,19 @@
 
 - `color-system-accessible-palette` - Use when a palette must pass contrast and survive dark mode *(160 lines)*
 - `component-api-design` - Use when a component's props keep growing and refs break *(160 lines)*
-- `design-tokens-dtcg-pipeline` - Use when tokens must build CSS, Tailwind, iOS, Android *(160 lines)*
-- `typography-scale-web` - Use when type sizes are ad hoc or shift on font load *(152 lines)*
+- `design-tokens-dtcg-pipeline` - Use when spacing or colour tokens drift across platforms. *(160 lines)*
+- `typography-scale-web` - Use when headings jump or the webfont shifts layout. *(152 lines)*
 
 ## UI/UX & accessibility (4)
 
 - `accessibility-wcag22-audit` - Use when auditing a UI to WCAG 2.2 AA with evidence. *(160 lines)*
-- `empty-states-and-error-ux` - Use when a UI needs empty, loading or error states. *(145 lines)*
-- `forms-ux-validation-patterns` - Use when building form validation and error states. *(160 lines)*
+- `empty-states-and-error-ux` - Use when an empty list or error state shows nothing. *(145 lines)*
+- `forms-ux-validation-patterns` - Use when form errors appear after submit or confuse. *(160 lines)*
 - `usability-testing-moderated` - Use when running moderated usability tests for decisions. *(140 lines)*
 
 ## Mobile development (4)
 
-- `android-release-hardening` - Use when an Android release build must pass R8 and Play. *(160 lines)*
+- `android-release-hardening` - Use when Play Console rejects an Android release build. *(160 lines)*
 - `flutter-project-architecture` - Use when a Flutter app outgrows one main.dart file. *(158 lines)*
 - `mobile-offline-sync-queue` - Use when offline edits must sync without duplicates. *(160 lines)*
 - `react-native-new-architecture` - Use when React Native must run on Fabric and TurboModules. *(160 lines)*
@@ -44,14 +44,14 @@
 - `adaptive-layouts-foldables-tablets` - Use when layouts break on tablets and foldables. *(134 lines)*
 - `ios-hig-vs-material3` - Use when porting one design across iOS and Android. *(133 lines)*
 - `mobile-navigation-patterns` - Use when tabs, stacks and deep links fight each other. *(142 lines)*
-- `touch-targets-and-thumb-zones` - Use when taps miss or buttons sit out of thumb reach. *(132 lines)*
+- `touch-targets-and-thumb-zones` - Use when taps miss small buttons out of thumb reach. *(132 lines)*
 
 ## Machine learning & LLM (5)
 
 - `llm-app-context-engineering` - Use when an LLM app drifts, loops or overflows context. *(159 lines)*
 - `ml-problem-framing-baseline` - Use when a product idea needs an ML metric and baseline. *(159 lines)*
-- `prompt-injection-defense` - Use when untrusted text reaches a model or tool. *(160 lines)*
-- `rag-evaluation-harness` - Use when a RAG change needs a CI regression gate. *(159 lines)*
+- `prompt-injection-defense` - Use when retrieved docs or pages can steer the model. *(160 lines)*
+- `rag-evaluation-harness` - Use when reviewers ask if a RAG change is better. *(159 lines)*
 - `rag-retrieval-pipeline` - Use when RAG misses exact terms or cites wrong passages. *(159 lines)*
 
 ## SA-MP / open.mp (134)
@@ -92,7 +92,7 @@
 - `economy-inflation-analytics` - Use when prices drift and nobody can prove why. *(160 lines)*
 - `encoding-crlf-ansi-guard` - Use when Pawn sources pick up CRLF, BOM or ANSI. *(158 lines)*
 - `exterior-world-lod-drawdistance` - Use when exteriors flicker or vanish at distance. *(133 lines)*
-- `fake-kill-bullet-crasher-shield` - Use when fake kill or bullet crasher packets hit. *(160 lines)*
+- `fake-kill-bullet-crasher-shield` - Use when kills are claimed with no shooter or shot. *(160 lines)*
 - `fcnpc-legacy-to-omp-port` - Use when FCNPC calls must move to open.mp NPC natives. *(148 lines)*
 - `git-gamemode-workflow` - Use when several devs ship one Pawn gamemode. *(117 lines)*
 - `global-vs-player-td-budget` - Use when a HUD must choose the global or per-player pool. *(156 lines)*
@@ -166,7 +166,7 @@
 - `survival-vitals-hunger-infection` - Use when hunger, thirst or infection drift and pile up. *(160 lines)*
 - `tablist-headers-formatting` - Use when the TAB list header or name rows look wrong. *(158 lines)*
 - `teleport-airbreak-detection` - Use when players teleport or fly across the map. *(159 lines)*
-- `textdraw-clickable-hitbox-math` - Use when clicks miss the visual TextDraw button. *(112 lines)*
+- `textdraw-clickable-hitbox-math` - Use when TextDraw clicks land in the wrong place. *(112 lines)*
 - `textdraw-color-gradient-palettes` - Use when HUD colours fail contrast or gradients band. *(159 lines)*
 - `textdraw-limit-2048-optimizer` - Use when the TextDraw pool runs near 2048 or 256. *(144 lines)*
 - `textdraw-preview-model-3d-rigging` - Use when model previews render blank or wrong. *(160 lines)*
@@ -176,7 +176,7 @@
 - `textdraw-widescreen-mobile-scaling` - Use when a HUD clips on ultrawide or phone screens. *(148 lines)*
 - `textdraw-zorder-layer-stacking` - Use when a panel's text hides behind its own background. *(160 lines)*
 - `texture-studio-export-optimizer` - Use when a Texture Studio export is bloated or slow. *(127 lines)*
-- `transaction-rollback-economy` - Use when money must move atomically or roll back. *(160 lines)*
+- `transaction-rollback-economy` - Use when concurrent writes duplicate or lose money. *(160 lines)*
 - `ufw-ddos-raknet-mitigation` - Use when UDP floods keep dropping the server. *(159 lines)*
 - `vehicle-damage-part-sync` - Use when panel, door or tyre damage is lost on respawn. *(146 lines)*
 - `vehicle-data-persistence` - Use when vehicles reset or duplicate after restart. *(160 lines)*
