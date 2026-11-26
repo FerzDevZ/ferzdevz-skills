@@ -61,53 +61,53 @@ dan centang barisnya di bawah.
 
 ## Wave 2 (47 skill)
 
-- [ ] `3d-text-label-streaming`
-- [ ] `actor-npc-shopkeeper-setup`
-- [ ] `admin-action-audit-trail`
-- [ ] `amx-decompilation-audit`
-- [ ] `android-mobile-client-sync-guard`
-- [ ] `automated-ci-pawncc-github`
-- [ ] `automated-db-backup-cron`
-- [ ] `backup-recovery-disaster-plan`
-- [ ] `blueg-mysql-r41-threaded`
-- [ ] `client-crash-opcode-lookup`
-- [ ] `component-ci-testing`
-- [ ] `crafting-blueprint-system`
-- [ ] `custom-dff-txd-model-converter-pipeline`
-- [ ] `custom-include-api-design`
-- [ ] `custom-interior-shell-builder`
-- [ ] `custom-speedometer-td`
-- [ ] `custom-weapon-damage-config`
-- [ ] `death-injury-knockdown-state`
-- [ ] `discord-webhook-log-bridge`
-- [ ] `docker-omp-mariadb-setup`
-- [ ] `dynamic-faction-turf-war`
-- [ ] `dynamic-object-material-text-signs`
-- [ ] `dynamic-pagination-dialog`
-- [ ] `dynamic-zone-area-triggers`
-- [ ] `economy-inflation-analytics`
-- [ ] `encoding-crlf-ansi-guard`
-- [ ] `exterior-world-lod-drawdistance`
-- [ ] `fcnpc-legacy-to-omp-port`
-- [ ] `git-gamemode-workflow`
-- [ ] `global-vs-player-td-budget`
-- [ ] `housing-basebuilding-streamer`
-- [ ] `include-dependency-resolver`
-- [ ] `interior-exterior-portal-streaming`
-- [ ] `inventory-weight-slot-engine`
-- [ ] `k8s-omp-fleet`
-- [ ] `legacy-to-openmp-migration`
-- [ ] `linux-samp-omp-systemd`
-- [ ] `live-hotfix-filterscript`
-- [ ] `mapandreas-colandreas-raycast`
-- [ ] `mapping-collision-colandreas-bake`
-- [ ] `mission-quest-objective-tracker`
-- [ ] `modular-map-file-parser-cfg-json`
-- [ ] `multi-world-instance-sharding`
-- [ ] `nicks-td-editor-export-refactor`
-- [ ] `notification-toast-queue`
-- [ ] `ntd-project-to-modular-include`
-- [ ] `omp-ban-ip-cidr-management`
+- [x] `3d-text-label-streaming`
+- [x] `actor-npc-shopkeeper-setup`
+- [x] `admin-action-audit-trail`
+- [x] `amx-decompilation-audit`
+- [x] `android-mobile-client-sync-guard`
+- [x] `automated-ci-pawncc-github`
+- [x] `automated-db-backup-cron`
+- [x] `backup-recovery-disaster-plan`
+- [x] `blueg-mysql-r41-threaded`
+- [x] `client-crash-opcode-lookup`
+- [x] `component-ci-testing`
+- [x] `crafting-blueprint-system`
+- [x] `custom-dff-txd-model-converter-pipeline`
+- [x] `custom-include-api-design`
+- [x] `custom-interior-shell-builder`
+- [x] `custom-speedometer-td`
+- [x] `custom-weapon-damage-config`
+- [x] `death-injury-knockdown-state`
+- [x] `discord-webhook-log-bridge`
+- [x] `docker-omp-mariadb-setup`
+- [x] `dynamic-faction-turf-war`
+- [x] `dynamic-object-material-text-signs`
+- [x] `dynamic-pagination-dialog`
+- [x] `dynamic-zone-area-triggers`
+- [x] `economy-inflation-analytics`
+- [x] `encoding-crlf-ansi-guard`
+- [x] `exterior-world-lod-drawdistance`
+- [x] `fcnpc-legacy-to-omp-port`
+- [x] `git-gamemode-workflow`
+- [x] `global-vs-player-td-budget`
+- [x] `housing-basebuilding-streamer`
+- [x] `include-dependency-resolver`
+- [x] `interior-exterior-portal-streaming`
+- [x] `inventory-weight-slot-engine`
+- [x] `k8s-omp-fleet`
+- [x] `legacy-to-openmp-migration`
+- [x] `linux-samp-omp-systemd`
+- [x] `live-hotfix-filterscript`
+- [x] `mapandreas-colandreas-raycast`
+- [x] `mapping-collision-colandreas-bake`
+- [x] `mission-quest-objective-tracker`
+- [x] `modular-map-file-parser-cfg-json`
+- [x] `multi-world-instance-sharding`
+- [x] `nicks-td-editor-export-refactor`
+- [x] `notification-toast-queue`
+- [x] `ntd-project-to-modular-include`
+- [x] `omp-ban-ip-cidr-management`
 
 ## Wave 3 (47 skill)
 
