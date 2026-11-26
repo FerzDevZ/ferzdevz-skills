@@ -43,7 +43,7 @@ jobs:
             fi
             echo
             echo "### Gates"
-            echo "\`audit\`, \`check_natives\`, \`catalog\`, \`eval lint\`, \`route_audit\` all green on this commit."
+            echo "\`audit\`, \`check_natives\`, \`catalog\`, \`eval lint\`, \`route_audit\`, \`check_claims\`, \`doctor\` all ran on this commit; the job fails if any of them fails."
           } > RELEASE_NOTES.md
           cat RELEASE_NOTES.md
 
