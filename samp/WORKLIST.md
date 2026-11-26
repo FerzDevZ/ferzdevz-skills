@@ -1,6 +1,6 @@
 # SA-MP/open.mp dev skills: upgrade worklist
 
-Total: 134 skills di `samp/`. Gate pack ini butuh section lengkap, >=60 baris, tabel Failure Modes, dan >=2 sumber hidup.
+Total: 134 skills di `samp/`. SELESAI: semua 134 sudah di-upgrade dan lulus gate (wave 1: 40, wave 2: 47, wave 3: 47). `samp/_backlog/` kosong. Gate pack ini butuh section lengkap, >=60 baris, tabel Failure Modes, dan >=2 sumber hidup.
 
 Status awal (impor dari ~/.hermes/skills/samp): 0 dari 134 lulus gate; rata-rata 32 baris.
 
@@ -111,50 +111,50 @@ dan centang barisnya di bawah.
 
 ## Wave 3 (47 skill)
 
-- [ ] `omp-built-in-npc-scripting`
-- [ ] `omp-c-api-gdk`
-- [ ] `omp-client-capability-detection`
-- [ ] `omp-component-load-order`
-- [ ] `omp-custom-models-setup`
-- [ ] `omp-json-config-env-vars`
-- [ ] `omp-legacy-plugin-bridge`
-- [ ] `omp-mysql-component-setup`
-- [ ] `omp-npc-pathfinding-combat`
-- [ ] `omp-packet-encryption-launcher`
-- [ ] `omp-pawn-component-sdk-cpp`
-- [ ] `omp-postgresql-component`
-- [ ] `omp-server-query-api`
-- [ ] `omp-unicode-utf8-chat`
-- [ ] `pawn-profiler-optimization`
-- [ ] `pawn-raknet-packet-guard`
-- [ ] `player-report-ticket-system`
-- [ ] `progress-bar-hud-rendering`
-- [ ] `raknet-packet-desync-debug`
-- [ ] `redis-cross-server-cache`
-- [ ] `release-changelog-generator`
-- [ ] `runtime-error-4-bounds-check`
-- [ ] `samp-map-editor-pipelines`
-- [ ] `samp-model-selection-ui`
-- [ ] `samp-third-party-anticheat-integration`
-- [ ] `samp-voice-bridge`
-- [ ] `sampctl-package-manager`
-- [ ] `speedhack-vehicle-physics-check`
-- [ ] `sql-injection-escape-audit`
-- [ ] `sqlite-local-db-patterns`
-- [ ] `stress-test-bot-simulation`
-- [ ] `survival-vitals-hunger-infection`
-- [ ] `tablist-headers-formatting`
-- [ ] `textdraw-color-gradient-palettes`
-- [ ] `textdraw-preview-model-3d-rigging`
-- [ ] `textdraw-radial-wheel-menu`
-- [ ] `textdraw-scrollbar-list-grid`
-- [ ] `textdraw-txd-sprite-atlas-guide`
-- [ ] `textdraw-zorder-layer-stacking`
-- [ ] `texture-studio-export-optimizer`
-- [ ] `ufw-ddos-raknet-mitigation`
-- [ ] `weather-time-sync-system`
-- [ ] `ysi-y-bit-bitarray-flags`
-- [ ] `ysi-y-ini-legacy-storage`
-- [ ] `ysi-y-inline-callbacks`
-- [ ] `ysi-y-iterate-foreach`
-- [ ] `ysi-y-va-variadic-args`
+- [x] `omp-built-in-npc-scripting`
+- [x] `omp-c-api-gdk`
+- [x] `omp-client-capability-detection`
+- [x] `omp-component-load-order`
+- [x] `omp-custom-models-setup`
+- [x] `omp-json-config-env-vars`
+- [x] `omp-legacy-plugin-bridge`
+- [x] `omp-mysql-component-setup`
+- [x] `omp-npc-pathfinding-combat`
+- [x] `omp-packet-encryption-launcher`
+- [x] `omp-pawn-component-sdk-cpp`
+- [x] `omp-postgresql-component`
+- [x] `omp-server-query-api`
+- [x] `omp-unicode-utf8-chat`
+- [x] `pawn-profiler-optimization`
+- [x] `pawn-raknet-packet-guard`
+- [x] `player-report-ticket-system`
+- [x] `progress-bar-hud-rendering`
+- [x] `raknet-packet-desync-debug`
+- [x] `redis-cross-server-cache`
+- [x] `release-changelog-generator`
+- [x] `runtime-error-4-bounds-check`
+- [x] `samp-map-editor-pipelines`
+- [x] `samp-model-selection-ui`
+- [x] `samp-third-party-anticheat-integration`
+- [x] `samp-voice-bridge`
+- [x] `sampctl-package-manager`
+- [x] `speedhack-vehicle-physics-check`
+- [x] `sql-injection-escape-audit`
+- [x] `sqlite-local-db-patterns`
+- [x] `stress-test-bot-simulation`
+- [x] `survival-vitals-hunger-infection`
+- [x] `tablist-headers-formatting`
+- [x] `textdraw-color-gradient-palettes`
+- [x] `textdraw-preview-model-3d-rigging`
+- [x] `textdraw-radial-wheel-menu`
+- [x] `textdraw-scrollbar-list-grid`
+- [x] `textdraw-txd-sprite-atlas-guide`
+- [x] `textdraw-zorder-layer-stacking`
+- [x] `texture-studio-export-optimizer`
+- [x] `ufw-ddos-raknet-mitigation`
+- [x] `weather-time-sync-system`
+- [x] `ysi-y-bit-bitarray-flags`
+- [x] `ysi-y-ini-legacy-storage`
+- [x] `ysi-y-inline-callbacks`
+- [x] `ysi-y-iterate-foreach`
+- [x] `ysi-y-va-variadic-args`

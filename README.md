@@ -9,8 +9,9 @@ meta-tooling untuk merawat pack ini.
 
 ## Status
 
-- Rencana lengkap 62 skill: lihat `PLANNING.md` (peta domain + gelombang pengerjaan).
-- Setiap skill wajib lulus gate struktur, kedalaman, tabel kegagalan, dan sumber hidup.
+- 165 skill terbit, 9 kategori: web-dev, web-design, ui-ux, mobile-dev, mobile-design, ml, samp, ops, meta.
+- 134 skill SA-MP/open.mp sudah lulus kontrak penuh; `samp/_backlog/` kosong.
+- Setiap skill wajib lulus gate struktur, kedalaman tabel kegagalan, sumber hidup, dan allowlist native.
 - `CATALOG.md` dihasilkan otomatis; jangan diedit tangan.
 
 ## Struktur

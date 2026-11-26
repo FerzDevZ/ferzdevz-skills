@@ -41,6 +41,8 @@ def read(p: pathlib.Path) -> tuple[str, str, str]:
 def build(root: pathlib.Path) -> str:
     rows: dict[str, list[tuple[str, str, int]]] = {}
     for p in sorted(root.glob("*/*/SKILL.md")):
+        if p.parent.parent.name.startswith("_"):
+            continue  # _backlog stubs are unpublished and must not appear in the catalog
         cat = p.parent.parent.name
         rows.setdefault(cat, []).append(read(p))
     total = sum(len(v) for v in rows.values())
