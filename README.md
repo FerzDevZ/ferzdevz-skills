@@ -24,7 +24,7 @@ mobile-dev/     Flutter, React Native, Android/iOS release, offline sync
 mobile-design/  HIG vs Material 3, navigasi, touch target, layout adaptif
 ml/             framing, RAG, evaluasi, context engineering
 samp/           SA-MP/open.mp: TextDraw, streamer, data, anticheat, build, kendaraan, YSI
-  _backlog/     94 skill lama yang belum lolos gate (tidak di-install, tidak diaudit)
+samp-client/    klien C++: entity objek, wiring RPC menu
 ops/            Docker, CI gate, supply chain
 meta/           auditor pack, publish, depth upgrade, evals
 ```

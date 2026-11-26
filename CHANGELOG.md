@@ -3,6 +3,19 @@
 Format: satu bagian per tag rilis, dikutip dari workflow `release`.
 Skill bertambah = versi minor; perbaikan gate/teks = patch.
 
+## v1.7.0
+
+- Kategori baru `samp-client` (lapisan klien C++), dua skill dari kode nyata
+  `samp-client-ferzdevz`:
+  - `samp-client-object-entity-lifecycle`: `TryLoadModel` -> `ScriptCommand(create_object)`
+    -> `GamePool_Object_GetAt` -> `SetPosn`/`Add`, plus urutan destroy dan 16 slot material.
+  - `samp-client-menu-rpc-handling`: RPC 76/77/78, urutan wire `ScrInitMenu` yang sebenarnya
+    (id, twoColumns, title, pos, widths, menuEnabled, 12 bit rowEnabled, header, counts,
+    blob), batas `MAX_MENUS`/`MAX_MENU_ROWS`/`MENU_TEXT_LEN`, dan `TakeSelection()`.
+- Routing eval naik ke 52 case (81% recall@1) dan mencakup gejala klien.
+- Catatan: dua fakta di skill ini awalnya salah tulis (urutan wire dan tipe `rowEnabled`);
+  keduanya dikoreksi setelah membaca `net/scriptrpc.cpp`, bukan dari ingatan.
+
 ## v1.6.0
 
 - `bin/route_check.py` + `evals/routing.json`: 50 prompt nyata, recall@1 64% -> **80%**,

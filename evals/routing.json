@@ -1,55 +1,213 @@
 {
  "note": "Each entry is a realistic request plus the skill that should win. Prompts are short on purpose: they mimic what a user types, not what a skill author would write.",
  "cases": [
-  {"prompt": "Every route in our Next app reports as dynamic since we added a cart badge", "expect": "nextjs-app-router-production"},
-  {"prompt": "LCP is 4.2s on mobile and INP spikes when the filter panel opens", "expect": "web-performance-core-vitals"},
-  {"prompt": "A report query is fine at 10k rows but times out at 5 million", "expect": "postgres-query-and-index-tuning"},
-  {"prompt": "Users get logged out after a tab switch and CSRF tokens keep expiring", "expect": "auth-session-cookie-hardening"},
-  {"prompt": "Type check takes 90 seconds and half the repo is implicit any", "expect": "typescript-strict-project-setup"},
-  {"prompt": "Our brand palette fails contrast on the secondary button in dark mode", "expect": "color-system-accessible-palette"},
-  {"prompt": "Designers change a spacing value and three platforms drift apart", "expect": "design-tokens-dtcg-pipeline"},
-  {"prompt": "Text jumps when the webfont loads and headings have no consistent scale", "expect": "typography-scale-web"},
-  {"prompt": "Our Button component now takes 24 boolean props and ref forwarding is broken", "expect": "component-api-design"},
-  {"prompt": "Form errors only show after submit and users cannot tell which field failed", "expect": "forms-ux-validation-patterns"},
-  {"prompt": "The list looks broken when there is no data and the error state is blank", "expect": "empty-states-and-error-ux"},
-  {"prompt": "We need to state WCAG 2.2 AA conformance for a public tender", "expect": "accessibility-wcag22-audit"},
-  {"prompt": "Run a usability test with five users and turn findings into decisions", "expect": "usability-testing-moderated"},
-  {"prompt": "The Flutter app is one 4000-line main.dart and the team keeps conflicting", "expect": "flutter-project-architecture"},
-  {"prompt": "React Native crashes only in release with Unimplemented component after upgrade", "expect": "react-native-new-architecture"},
-  {"prompt": "Play Console rejects the build over R8 or the target API level", "expect": "android-release-hardening"},
-  {"prompt": "Offline edits duplicate after reconnecting and the queue never drains", "expect": "mobile-offline-sync-queue"},
-  {"prompt": "The same screen is forced onto iOS and Android and feels wrong on both", "expect": "ios-hig-vs-material3"},
-  {"prompt": "Taps miss the icon and the button is 18dp in the corner", "expect": "touch-targets-and-thumb-zones"},
-  {"prompt": "Our three tabs, a stack and a bottom sheet fight over the back button", "expect": "mobile-navigation-patterns"},
-  {"prompt": "The assistant loops, forgets earlier turns and blows the context window", "expect": "llm-app-context-engineering"},
-  {"prompt": "RAG answers cite the wrong passage and miss exact product codes", "expect": "rag-retrieval-pipeline"},
-  {"prompt": "We changed chunk size and reviewers ask whether it is better", "expect": "rag-evaluation-harness"},
-  {"prompt": "We have logs but no idea which ML metric matches the product goal", "expect": "ml-problem-framing-baseline"},
-  {"prompt": "A retrieved PDF includes instructions telling the model to call a tool", "expect": "prompt-injection-defense"},
-  {"prompt": "Midtrans webhook fires twice and one order is charged twice", "expect": "payments-idempotency-webhook"},
-  {"prompt": "Analytics events are named differently by web and mobile teams", "expect": "analytics-event-taxonomy"},
-  {"prompt": "A new deploy breaks old mobile clients hitting the API", "expect": "api-versioning-rest-graphql"},
-  {"prompt": "Lighthouse reports no CSP and HSTS is missing on checkout", "expect": "web-security-headers-csp"},
-  {"prompt": "Strings are concatenated so German and Arabic layouts break", "expect": "i18n-l10n-web"},
-  {"prompt": "Our e2e suite takes 40 minutes and unit tests stopped being written", "expect": "testing-pyramid-and-contract-tests"},
-  {"prompt": "A feature ships with no threat model and security asks for evidence", "expect": "appsec-threat-model-asvs"},
-  {"prompt": "Load test passes at 200 users but production p99 is 8 seconds", "expect": "load-testing-k6-budget"},
-  {"prompt": "Kafka consumers rebalance and reprocess the same orders", "expect": "kafka-event-driven-consumers"},
-  {"prompt": "Flags stay on forever and nobody knows which code paths are live", "expect": "feature-flags-rollout"},
-  {"prompt": "Alerts fire ten minutes late and traces break between services", "expect": "observability-instrumentation"},
-  {"prompt": "The image is 1.2GB and runs as root in production", "expect": "docker-image-hardening"},
-  {"prompt": "CI runs tests before linting and merges with known vulnerabilities", "expect": "dependency-supply-chain-security"},
-  {"prompt": "A dbt model full-refreshes every night and costs a fortune", "expect": "warehouse-modeling-dbt"},
-  {"prompt": "The client wants everything and we need a one-page PRD with a smaller scope", "expect": "prd-and-scope-cut"},
-  {"prompt": "TextDraw pool exhausted at 60 players on our SA-MP server", "expect": "textdraw-limit-2048-optimizer"},
-  {"prompt": "HUD element does not react to clicks in the right place", "expect": "textdraw-clickable-hitbox-math"},
-  {"prompt": "Dynamic objects pop in and the streamer lags when players drive fast", "expect": "incognito-streamer-tuning"},
-  {"prompt": "Players die with no shooter and killers still get paid", "expect": "fake-kill-bullet-crasher-shield"},
-  {"prompt": "Money is duplicated when two players transfer at the same time", "expect": "transaction-rollback-economy"},
-  {"prompt": "Server dies with file or function not found after adding a plugin", "expect": "runtime-error-19-plugin-fix"},
-  {"prompt": "MySQL query takes 2 seconds inside the gamemode", "expect": "mysql-slow-query-debugger"},
-  {"prompt": "Players teleport across the map without a warp", "expect": "teleport-airbreak-detection"},
-  {"prompt": "Server objects are created but never drawn for players", "expect": "dynamic-object-map-loader"},
-  {"prompt": "I do not know which skill applies to this symptom", "expect": "skill-router"}
+  {
+   "prompt": "Every route in our Next app reports as dynamic since we added a cart badge",
+   "expect": "nextjs-app-router-production"
+  },
+  {
+   "prompt": "LCP is 4.2s on mobile and INP spikes when the filter panel opens",
+   "expect": "web-performance-core-vitals"
+  },
+  {
+   "prompt": "A report query is fine at 10k rows but times out at 5 million",
+   "expect": "postgres-query-and-index-tuning"
+  },
+  {
+   "prompt": "Users get logged out after a tab switch and CSRF tokens keep expiring",
+   "expect": "auth-session-cookie-hardening"
+  },
+  {
+   "prompt": "Type check takes 90 seconds and half the repo is implicit any",
+   "expect": "typescript-strict-project-setup"
+  },
+  {
+   "prompt": "Our brand palette fails contrast on the secondary button in dark mode",
+   "expect": "color-system-accessible-palette"
+  },
+  {
+   "prompt": "Designers change a spacing value and three platforms drift apart",
+   "expect": "design-tokens-dtcg-pipeline"
+  },
+  {
+   "prompt": "Text jumps when the webfont loads and headings have no consistent scale",
+   "expect": "typography-scale-web"
+  },
+  {
+   "prompt": "Our Button component now takes 24 boolean props and ref forwarding is broken",
+   "expect": "component-api-design"
+  },
+  {
+   "prompt": "Form errors only show after submit and users cannot tell which field failed",
+   "expect": "forms-ux-validation-patterns"
+  },
+  {
+   "prompt": "The list looks broken when there is no data and the error state is blank",
+   "expect": "empty-states-and-error-ux"
+  },
+  {
+   "prompt": "We need to state WCAG 2.2 AA conformance for a public tender",
+   "expect": "accessibility-wcag22-audit"
+  },
+  {
+   "prompt": "Run a usability test with five users and turn findings into decisions",
+   "expect": "usability-testing-moderated"
+  },
+  {
+   "prompt": "The Flutter app is one 4000-line main.dart and the team keeps conflicting",
+   "expect": "flutter-project-architecture"
+  },
+  {
+   "prompt": "React Native crashes only in release with Unimplemented component after upgrade",
+   "expect": "react-native-new-architecture"
+  },
+  {
+   "prompt": "Play Console rejects the build over R8 or the target API level",
+   "expect": "android-release-hardening"
+  },
+  {
+   "prompt": "Offline edits duplicate after reconnecting and the queue never drains",
+   "expect": "mobile-offline-sync-queue"
+  },
+  {
+   "prompt": "The same screen is forced onto iOS and Android and feels wrong on both",
+   "expect": "ios-hig-vs-material3"
+  },
+  {
+   "prompt": "Taps miss the icon and the button is 18dp in the corner",
+   "expect": "touch-targets-and-thumb-zones"
+  },
+  {
+   "prompt": "Our three tabs, a stack and a bottom sheet fight over the back button",
+   "expect": "mobile-navigation-patterns"
+  },
+  {
+   "prompt": "The assistant loops, forgets earlier turns and blows the context window",
+   "expect": "llm-app-context-engineering"
+  },
+  {
+   "prompt": "RAG answers cite the wrong passage and miss exact product codes",
+   "expect": "rag-retrieval-pipeline"
+  },
+  {
+   "prompt": "We changed chunk size and reviewers ask whether it is better",
+   "expect": "rag-evaluation-harness"
+  },
+  {
+   "prompt": "We have logs but no idea which ML metric matches the product goal",
+   "expect": "ml-problem-framing-baseline"
+  },
+  {
+   "prompt": "A retrieved PDF includes instructions telling the model to call a tool",
+   "expect": "prompt-injection-defense"
+  },
+  {
+   "prompt": "Midtrans webhook fires twice and one order is charged twice",
+   "expect": "payments-idempotency-webhook"
+  },
+  {
+   "prompt": "Analytics events are named differently by web and mobile teams",
+   "expect": "analytics-event-taxonomy"
+  },
+  {
+   "prompt": "A new deploy breaks old mobile clients hitting the API",
+   "expect": "api-versioning-rest-graphql"
+  },
+  {
+   "prompt": "Lighthouse reports no CSP and HSTS is missing on checkout",
+   "expect": "web-security-headers-csp"
+  },
+  {
+   "prompt": "Strings are concatenated so German and Arabic layouts break",
+   "expect": "i18n-l10n-web"
+  },
+  {
+   "prompt": "Our e2e suite takes 40 minutes and unit tests stopped being written",
+   "expect": "testing-pyramid-and-contract-tests"
+  },
+  {
+   "prompt": "A feature ships with no threat model and security asks for evidence",
+   "expect": "appsec-threat-model-asvs"
+  },
+  {
+   "prompt": "Load test passes at 200 users but production p99 is 8 seconds",
+   "expect": "load-testing-k6-budget"
+  },
+  {
+   "prompt": "Kafka consumers rebalance and reprocess the same orders",
+   "expect": "kafka-event-driven-consumers"
+  },
+  {
+   "prompt": "Flags stay on forever and nobody knows which code paths are live",
+   "expect": "feature-flags-rollout"
+  },
+  {
+   "prompt": "Alerts fire ten minutes late and traces break between services",
+   "expect": "observability-instrumentation"
+  },
+  {
+   "prompt": "The image is 1.2GB and runs as root in production",
+   "expect": "docker-image-hardening"
+  },
+  {
+   "prompt": "CI runs tests before linting and merges with known vulnerabilities",
+   "expect": "dependency-supply-chain-security"
+  },
+  {
+   "prompt": "A dbt model full-refreshes every night and costs a fortune",
+   "expect": "warehouse-modeling-dbt"
+  },
+  {
+   "prompt": "The client wants everything and we need a one-page PRD with a smaller scope",
+   "expect": "prd-and-scope-cut"
+  },
+  {
+   "prompt": "TextDraw pool exhausted at 60 players on our SA-MP server",
+   "expect": "textdraw-limit-2048-optimizer"
+  },
+  {
+   "prompt": "HUD element does not react to clicks in the right place",
+   "expect": "textdraw-clickable-hitbox-math"
+  },
+  {
+   "prompt": "Dynamic objects pop in and the streamer lags when players drive fast",
+   "expect": "incognito-streamer-tuning"
+  },
+  {
+   "prompt": "Players die with no shooter and killers still get paid",
+   "expect": "fake-kill-bullet-crasher-shield"
+  },
+  {
+   "prompt": "Money is duplicated when two players transfer at the same time",
+   "expect": "transaction-rollback-economy"
+  },
+  {
+   "prompt": "Server dies with file or function not found after adding a plugin",
+   "expect": "runtime-error-19-plugin-fix"
+  },
+  {
+   "prompt": "MySQL query takes 2 seconds inside the gamemode",
+   "expect": "mysql-slow-query-debugger"
+  },
+  {
+   "prompt": "Players teleport across the map without a warp",
+   "expect": "teleport-airbreak-detection"
+  },
+  {
+   "prompt": "Server objects are created but never drawn for players",
+   "expect": "dynamic-object-map-loader"
+  },
+  {
+   "prompt": "I do not know which skill applies to this symptom",
+   "expect": "skill-router"
+  },
+  {
+   "prompt": "Server objects are tracked by the client but nothing is drawn in the world",
+   "expect": "samp-client-object-entity-lifecycle"
+  },
+  {
+   "prompt": "The server menu never opens on the Android client, dialogs still work",
+   "expect": "samp-client-menu-rpc-handling"
+  }
  ]
 }
