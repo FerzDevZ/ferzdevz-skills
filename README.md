@@ -49,6 +49,21 @@ Satu skill = satu folder:
 
 Script menjalankan audit dulu dan berhenti kalau ada skill yang gagal.
 
+## Pakai di agent lain
+
+Formatnya standar Agent Skills: satu folder berisi `SKILL.md`. Agent lain tidak butuh
+`bin/`, cukup foldernya.
+
+```bash
+# Claude Code / Codex style skill directories
+mkdir -p .claude/skills && cp -r web-dev/nextjs-app-router-production .claude/skills/
+# atau
+mkdir -p .agents/skills && cp -r ml/rag-evaluation-harness .agents/skills/
+```
+
+Kalau agent tersebut hanya membaca satu direktori skill, salin `<kategori>/<skill>/`
+tanpa struktur kategori.
+
 ## Gate
 
 ```bash
@@ -57,6 +72,7 @@ python3 bin/audit.py --root . --net      # + cek semua URL sumber
 python3 bin/catalog.py                   # regenerate CATALOG.md
 python3 bin/catalog.py --check           # CI: gagal kalau katalog basi
 python3 bin/eval.py lint                 # case eval valid (grader, regex, prompt)
+python3 bin/route_audit.py               # tabrakan deskripsi + deskripsi terlalu generik
 python3 bin/eval.py score --case nextjs-dynamic-layout --dir <jawaban> --compare <jawaban-lain>
 bash bin/install.sh --dry-run
 ```

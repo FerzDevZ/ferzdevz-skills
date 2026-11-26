@@ -166,4 +166,4 @@ mysql -N -B -e "SELECT id, INET6_NTOA(ip), reason, expires FROM samp.bans \
 
 - https://open.mp/docs/scripting/functions/Ban
 - https://open.mp/docs/scripting/functions/BlockIpAddress
-- https://manpages.ubuntu.com/manpages/noble/en/man8/ufw.8.html
+- https://help.ubuntu.com/community/UFW

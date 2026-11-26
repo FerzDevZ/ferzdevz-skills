@@ -23,5 +23,7 @@ jobs:
         run: python3 bin/catalog.py --check
       - name: eval cases are valid
         run: python3 bin/eval.py lint
+      - name: routing descriptions do not collide
+        run: python3 bin/route_audit.py --fail-on-dupes
       - name: install script is runnable
         run: bash bin/install.sh --dry-run

@@ -163,6 +163,6 @@ fills with attacker addresses.
 
 ## Sources (2026)
 
-- https://manpages.ubuntu.com/manpages/noble/man8/ufw.8.html
+- https://help.ubuntu.com/community/UFW
 - https://open.mp/docs/server/config.json
 - https://documentation.ubuntu.com/server/how-to/security/firewalls/

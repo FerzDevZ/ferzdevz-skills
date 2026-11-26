@@ -65,15 +65,32 @@ def load_case(name: str) -> tuple[pathlib.Path, list[dict]]:
     return case, graders
 
 
+def resolve_path(answer: pathlib.Path, pattern: str) -> pathlib.Path | None:
+    """Exact relative path first, then a glob (for agents that pick their own file name)."""
+    direct = answer / pattern
+    if direct.is_file():
+        return direct
+    matches = sorted(p for p in answer.rglob(pattern.split("/")[-1]) if p.is_file())
+    if not matches:
+        return None
+    # prefer a match whose relative path ends with the pattern's tail segments
+    tail = [seg for seg in pattern.split("/") if seg not in ("**", "*")]
+    for m in matches:
+        rel = m.relative_to(answer).as_posix()
+        if rel.endswith("/".join(tail)):
+            return m
+    return matches[0]
+
+
 def score(answer: pathlib.Path, graders: list[dict]) -> tuple[float, list[dict]]:
     results, total, earned = [], 0, 0.0
     for g in graders:
         weight = float(g.get("weight", "1"))
         total += weight
-        target = answer / g["path"]
-        text = target.read_text(encoding="utf-8", errors="replace") if target.is_file() else ""
-        ok = target.is_file()
-        detail = "file read" if ok else "file missing"
+        target = resolve_path(answer, g["path"])
+        text = target.read_text(encoding="utf-8", errors="replace") if target else ""
+        ok = target is not None
+        detail = f"found {target.relative_to(answer)}" if target else "file missing"
         if ok and "must_match" in g:
             hit = bool(re.search(g["must_match"], text, re.M))
             ok = ok and hit
