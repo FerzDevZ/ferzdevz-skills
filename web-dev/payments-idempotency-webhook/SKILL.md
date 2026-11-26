@@ -41,6 +41,7 @@ Indomaret omit it.
    re-encodes the JSON, DOKU's `Digest` never matches, and that is the usual false alarm.
 
 ```ts
+import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
 app.post('/webhooks/:provider', express.raw({ type: 'application/json', limit: '256kb' }), handler);
 app.use(express.json()); // everywhere else
 
@@ -64,7 +65,7 @@ export function verifyDoku(h: Record<string, string | undefined>, rawBody: strin
 `Request-Target` is the path of your notification URL (`/webhooks/doku`), not the full
 URL, and the component order matters. Xendit is the same compare on its `x-callback-token`.
 
-3. Record the event before doing anything financial — the unique key *is* the dedupe.
+2. Record the event before doing anything financial — the unique key *is* the dedupe.
 
 ```sql
 CREATE TABLE payment_event (
@@ -82,10 +83,9 @@ const r = await db.query(`INSERT INTO payment_event (provider, event_id, order_i
 if (r.rowCount === 0) return ack(); // replay: answer 2xx, change nothing
 ```
 
-Answer `2xx` to replays: a `409` makes the provider retry harder, and that storm is what
-takes the endpoint down.
+Answer `2xx` to replays: a `409` makes the provider retry harder, and that storm is what takes the endpoint down.
 
-4. Move the order with a conditional update, never read-then-write. The same rule covers
+3. Move the order with a conditional update, never read-then-write. The same rule covers
    the outbound charge: one `Idempotency-Key` (V4 UUID) per attempt, stored on the order.
 
 ```sql
@@ -99,7 +99,7 @@ Zero rows means already paid (fine, `2xx`) or an illegal jump such as `expired �
 expired}`, `paid → {refunded, chargeback}` — so a late `settlement` cannot regress a
 fulfilled order.
 
-5. Acknowledge fast, reject mismatched amounts, process after. A valid signature proves
+4. Acknowledge fast, reject mismatched amounts, process after. A valid signature proves
    origin, not that the customer paid the right figure, so compare before enqueuing.
 
 ```ts
@@ -108,7 +108,7 @@ export async function handler(req, res) {
   if (!verify(provider, req, rawBody)) return res.status(401).json({ error: 'bad_signature' });
   const event = JSON.parse(rawBody.toString('utf8'));
   if (!(await recordOnce(provider, event, rawBody))) return res.sendStatus(200); // replay
-  if (paidMinor(event) !== await getOrderAmountMinor(event.order_id)) {
+  if (Math.round(Number(event.gross_amount) * 100) !== await getOrderAmountMinor(event.order_id)) {
     await alert('payment_amount_mismatch', { orderId: event.order_id });
     return res.sendStatus(200); // acknowledge, never fulfil
   }
@@ -117,7 +117,7 @@ export async function handler(req, res) {
 }
 ```
 
-6. Reconcile what never arrived: poll orders past their SLA and ask the provider directly
+5. Reconcile what never arrived: poll orders past their SLA and ask the provider directly
    — Midtrans documents its Get Status API as exactly this failover.
 
 ```ts

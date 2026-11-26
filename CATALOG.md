@@ -5,7 +5,7 @@
 
 ## Web development (10)
 
-- `analytics-event-taxonomy` - Use when event names and properties drift per team. *(170 lines)*
+- `analytics-event-taxonomy` - Use when event names and properties drift per team. *(156 lines)*
 - `api-versioning-rest-graphql` - Use when an API change must not break old clients. *(158 lines)*
 - `auth-session-cookie-hardening` - Use when designing cookie sessions or OAuth login. *(159 lines)*
 - `i18n-l10n-web` - Use when UI strings or RTL break in a second locale. *(159 lines)*

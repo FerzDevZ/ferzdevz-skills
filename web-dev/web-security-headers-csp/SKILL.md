@@ -69,7 +69,7 @@ The name in `report-to csp` must match the key in `Reporting-Endpoints`.
 `style-src 'unsafe-inline'` is the deliberate compromise: CSS injection is a far smaller
 problem than breaking every CSS-in-JS library on day one.
 
-3. Mint the nonce per request and forward it to the renderer.
+2. Mint the nonce per request and forward it to the renderer.
 
 ```ts
 // middleware.ts
@@ -91,11 +91,11 @@ export function middleware(req: NextRequest) {
 export const config = { matcher: '/((?!_next/static|_next/image|favicon.ico).*)' };
 ```
 
-4. Attach it in the layout: `const nonce = (await headers()).get('x-nonce')` then
+3. Attach it in the layout: `const nonce = (await headers()).get('x-nonce')` then
    `<script nonce={nonce} src="/boot.js" />`. A tag rendered outside that tree needs the
    nonce passed as a prop.
 
-5. Roll out in report-only, then promote on an empty report table. Reports arrive as
+4. Roll out in report-only, then promote on an empty report table. Reports arrive as
    `POST application/reports+json` — an array of entries with `type: "csp-violation"`
    and a `body` carrying `effectiveDirective`, `blockedURL`, `documentURL` and `sample`.
    Legacy `report-uri` sends one object under `csp-report`, so accept both.
@@ -124,7 +124,7 @@ export async function POST(req: Request) {
 }
 ```
 
-6. Decide promotion with a query. Rows still on `script-src-elem` with
+5. Decide promotion with a query. Rows still on `script-src-elem` with
    `blocked_uri = 'inline'` are script tags missing their nonce.
 
 ```sql
@@ -134,7 +134,7 @@ WHERE created_at > now() - interval '7 days'
 GROUP BY 1, 2 ORDER BY hits DESC LIMIT 20;
 ```
 
-7. Ship HSTS in three steps — `max-age=300`, then `31536000`, then `includeSubDomains;
+6. Ship HSTS in three steps — `max-age=300`, then `31536000`, then `includeSubDomains;
    preload` — because shortening it is not instant. Add `preload` only when every
    subdomain answers `301` to `https`.
 
