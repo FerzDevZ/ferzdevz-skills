@@ -208,6 +208,10 @@
   {
    "prompt": "The server menu never opens on the Android client, dialogs still work",
    "expect": "samp-client-menu-rpc-handling"
+  },
+  {
+   "prompt": "Adding a new server RPC handler to the Android client, afraid of id collisions",
+   "expect": "samp-client-rpc-handler-registry"
   }
  ]
 }

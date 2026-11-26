@@ -3,6 +3,15 @@
 Format: satu bagian per tag rilis, dikutip dari workflow `release`.
 Skill bertambah = versi minor; perbaikan gate/teks = patch.
 
+## v1.8.0
+
+- `samp-client-rpc-handler-registry`: cara menambah handler RPC tanpa tabrakan id —
+  145 id resmi di `SAMPRPC.cpp`, 84 registrasi, guard per `Read`, validasi range pool,
+  idempoten saat replay, dan jalur `Packet_CustomRPC` (`0x29`/`0x2A`) yang tidak lewat tabel.
+  Contoh memakai `ScrSetGravity` yang benar-benar ada, termasuk menunjukkan bahwa handler
+  itu tidak memeriksa hasil `Read`.
+- Routing eval 53 case.
+
 ## v1.7.0
 
 - Kategori baru `samp-client` (lapisan klien C++), dua skill dari kode nyata
