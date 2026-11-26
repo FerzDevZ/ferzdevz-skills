@@ -22,7 +22,9 @@ GROUPS = {
     "mobile-dev": "Mobile development",
     "mobile-design": "Mobile design",
     "ml": "Machine learning & LLM",
+    "samp": "SA-MP / open.mp",
     "ops": "Ops & delivery",
+    "productivity": "Product & documents",
     "meta": "Meta: maintaining the pack",
 }
 

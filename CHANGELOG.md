@@ -3,6 +3,17 @@
 Format: satu bagian per tag rilis, dikutip dari workflow `release`.
 Skill bertambah = versi minor; perbaikan gate/teks = patch.
 
+## v1.5.0
+
+- 180 skill, 10 kategori. Tambah: `testing-pyramid-and-contract-tests`,
+  `appsec-threat-model-asvs`, `load-testing-k6-budget`, `warehouse-modeling-dbt`,
+  `prd-and-scope-cut`.
+- `evals/*/prompt.md` mewajibkan file ditulis sebelum penjelasan; run tanpa file hilang
+  (sebelumnya 3 dari 8), dan `money-concurrency` kini mengukur dua arm yang sama-sama
+  menghasilkan file (100% vs 100%).
+- Cron bulanan `ferzdevz-skills monthly gate` (tanggal 1, 09:00 WIB) menjalankan seluruh
+  gate dan hanya commit kalau hijau.
+
 ## v1.4.0
 
 - `bin/export_pack.py`: ekspor tree datar (`dist/skills/<name>/`) + zip
