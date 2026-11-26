@@ -27,5 +27,7 @@ jobs:
         run: python3 bin/route_audit.py --fail-on-dupes
       - name: version claims match the registries
         run: python3 bin/check_claims.py
+      - name: tree is self-consistent
+        run: python3 bin/doctor.py --profile . --repo .
       - name: install script is runnable
         run: bash bin/install.sh --dry-run

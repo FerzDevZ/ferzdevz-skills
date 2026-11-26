@@ -68,7 +68,32 @@ skill lain di kategori yang sama memuat panduan yang sama. Karena itu:
   dan menyimpang dari satu pola wajib; grader `FOR UPDATE` sebaiknya menerima urutan
   lock eksplisit sebagai alternatif.
 
-## 6. Cara mengulang
+## 6. Tooling yang lahir dari insiden
+
+Dua kali, arm "tanpa skill" merusak profil: `hermes chat` membuat ulang `~/.hermes/skills`
+begitu direktori itu hilang, sehingga pemulihan menemukan target yang sudah ada dan
+menaruh pohon asli di dalamnya (`skills/skills-off`).
+
+Yang sekarang mencegahnya:
+
+- `bin/eval_arm.sh` tidak lagi memindahkan profil. Ia membuat HOME sementara, menyalin
+  `config.yaml` + `.env`, lalu `skills` di-symlink (arm "with") atau dibiarkan tidak ada
+  (arm "without"). Profil asli tidak disentuh: terverifikasi 242 skill tetap utuh setelah run.
+- `bin/install.sh` menolak tujuan di dalam pack dan menolak tujuan yang sudah punya
+  `skills/` bersarang; ada `--backup` yang membuat tar bertanggal di `~/.hermes/backups/`.
+- `bin/doctor.py` memeriksa keanehan yang benar-benar terjadi: pohon bersarang, nama skill
+  duplikat, skill pack yang belum terpasang, direktori tanpa `SKILL.md`, dan `name:` yang
+  tidak sama dengan nama folder.
+
+## 7. Sebaran run (jujur)
+
+Dari 8 run agent yang saya jalankan untuk case Pawn, 3 tidak menghasilkan file jawaban
+sama sekali: agent berhenti di "langkah berikutnya adalah menulis file". Prompt dan
+`--max-turns` (12 lalu 20) tidak menghilangkan gejalanya. Itu keterbatasan harness, bukan
+bukti tentang skill, jadi run tanpa file dicatat sebagai 0% dan tidak dipakai untuk
+menyimpulkan efek — cukup dicatat sebagai noise.
+
+## 8. Cara mengulang
 
 ```bash
 python3 bin/eval.py score --case fake-kill-shield \
