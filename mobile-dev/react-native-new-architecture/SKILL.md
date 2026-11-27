@@ -1,6 +1,6 @@
 ---
 name: react-native-new-architecture
-description: Use when React Native must run on Fabric and TurboModules.
+description: Use when migrating React Native to the New Architecture.
 version: "2026.1.0"
 metadata:
   hermes:

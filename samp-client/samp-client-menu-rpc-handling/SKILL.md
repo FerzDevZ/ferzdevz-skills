@@ -1,6 +1,6 @@
 ---
 name: samp-client-menu-rpc-handling
-description: Use when server menus never open or select wrong row.
+description: Use when ShowMenu RPC never opens or picks wrong row.
 version: "2026.1.0"
 metadata:
   hermes:

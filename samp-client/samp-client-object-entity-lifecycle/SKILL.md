@@ -1,6 +1,6 @@
 ---
 name: samp-client-object-entity-lifecycle
-description: Use when server objects are tracked but not drawn.
+description: Use when CreateObject RPC arrives but objects never draw.
 version: "2026.1.0"
 metadata:
   hermes:

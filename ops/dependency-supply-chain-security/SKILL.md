@@ -1,6 +1,6 @@
 ---
 name: dependency-supply-chain-security
-description: Use when dependency pins or SBOM gates are missing.
+description: Use when CI runs tests before linting, or a merge includes known vulnerabilities without gate checks.
 version: "2026.1.0"
 metadata:
   hermes:

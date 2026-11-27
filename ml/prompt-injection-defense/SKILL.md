@@ -1,6 +1,6 @@
 ---
 name: prompt-injection-defense
-description: Use when retrieved docs or pages can steer the model.
+description: Use when a retrieved PDF tells the model to call a tool or follow hidden instructions.
 version: "2026.1.0"
 metadata:
   hermes:

@@ -1,6 +1,6 @@
 ---
 name: analytics-event-taxonomy
-description: Use when event names or properties differ per team.
+description: Use when analytics event names or schema differ.
 version: "2026.1.0"
 metadata:
   hermes:

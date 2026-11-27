@@ -5,11 +5,11 @@
 
 ## Web development (12)
 
-- `analytics-event-taxonomy` - Use when event names or properties differ per team. *(156 lines)*
+- `analytics-event-taxonomy` - Use when analytics event names or schema differ. *(156 lines)*
 - `api-versioning-rest-graphql` - Use when an API change must not break old clients. *(158 lines)*
 - `appsec-threat-model-asvs` - Use when a feature ships with no threat model. *(170 lines)*
-- `auth-session-cookie-hardening` - Use when sessions drop, CSRF fails or refresh leaks. *(159 lines)*
-- `i18n-l10n-web` - Use when strings, plurals or RTL break in another locale. *(159 lines)*
+- `auth-session-cookie-hardening` - Use when session cookies drop or CSRF/refresh leaks. *(159 lines)*
+- `i18n-l10n-web` - Use when strings, plurals, RTL, or locales break. *(159 lines)*
 - `nextjs-app-router-production` - Use when Next.js App Router pages are slow or stale. *(160 lines)*
 - `payments-idempotency-webhook` - Use when payment webhooks double-charge or go missing. *(160 lines)*
 - `postgres-query-and-index-tuning` - Use when a Postgres query is slow or times out at scale. *(155 lines)*
@@ -22,7 +22,7 @@
 
 - `color-system-accessible-palette` - Use when a palette must pass contrast and survive dark mode *(160 lines)*
 - `component-api-design` - Use when a component's props keep growing and refs break *(160 lines)*
-- `design-tokens-dtcg-pipeline` - Use when spacing or colour tokens drift across platforms. *(160 lines)*
+- `design-tokens-dtcg-pipeline` - Use when design tokens drift across platforms. *(160 lines)*
 - `typography-scale-web` - Use when headings jump or the webfont shifts layout. *(152 lines)*
 
 ## UI/UX & accessibility (4)
@@ -37,7 +37,7 @@
 - `android-release-hardening` - Use when Play Console rejects an Android release build. *(160 lines)*
 - `flutter-project-architecture` - Use when a Flutter app outgrows one main.dart file. *(158 lines)*
 - `mobile-offline-sync-queue` - Use when offline edits must sync without duplicates. *(160 lines)*
-- `react-native-new-architecture` - Use when React Native must run on Fabric and TurboModules. *(160 lines)*
+- `react-native-new-architecture` - Use when migrating React Native to the New Architecture. *(160 lines)*
 
 ## Mobile design (4)
 
@@ -50,7 +50,7 @@
 
 - `llm-app-context-engineering` - Use when an LLM app drifts, loops or overflows context. *(159 lines)*
 - `ml-problem-framing-baseline` - Use when a product idea needs an ML metric and baseline. *(159 lines)*
-- `prompt-injection-defense` - Use when retrieved docs or pages can steer the model. *(160 lines)*
+- `prompt-injection-defense` - Use when retrieved content injects steering instructions. *(160 lines)*
 - `rag-evaluation-harness` - Use when reviewers ask if a RAG change is better. *(159 lines)*
 - `rag-retrieval-pipeline` - Use when RAG misses exact terms or cites wrong passages. *(159 lines)*
 
@@ -60,7 +60,7 @@
 - `actor-npc-shopkeeper-setup` - Use when a shopkeeper actor or NPC misbehaves. *(160 lines)*
 - `admin-action-audit-trail` - Use when admin actions need a provable audit trail. *(152 lines)*
 - `amx-decompilation-audit` - Use when auditing an AMX you did not compile. *(149 lines)*
-- `android-mobile-client-sync-guard` - Use when mobile clients desync or burst after alt-tab. *(160 lines)*
+- `android-mobile-client-sync-guard` - Use when mobile SA-MP clients desync after alt-tab. *(160 lines)*
 - `async-player-data-load-save` - Use when player data load or save blocks or races. *(160 lines)*
 - `attached-object-bone-offsets` - Use when attached objects float, detach or miss a slot. *(160 lines)*
 - `automated-ci-pawncc-github` - Use when a Pawn build must gate a deploy in CI. *(159 lines)*
@@ -84,11 +84,11 @@
 - `discord-webhook-log-bridge` - Use when server events must reach Discord reliably. *(160 lines)*
 - `docker-omp-mariadb-setup` - Use when a team needs one reproducible omp+MariaDB stack. *(158 lines)*
 - `dynamic-faction-turf-war` - Use when turf ownership or capture progress drifts. *(160 lines)*
-- `dynamic-object-map-loader` - Use when a 10k-object map stalls start-up or half-loads. *(158 lines)*
+- `dynamic-object-map-loader` - Use when streamed map objects half-load or never appear. *(160 lines)*
 - `dynamic-object-material-retexture` - Use when objects need new textures without custom models. *(122 lines)*
 - `dynamic-object-material-text-signs` - Use when a sign must be painted onto a 3D object. *(150 lines)*
 - `dynamic-pagination-dialog` - Use when a dialog list is too long for one page. *(163 lines)*
-- `dynamic-zone-area-triggers` - Use when area entry fires twice or never fires. *(160 lines)*
+- `dynamic-zone-area-triggers` - Use when streamer area callbacks fire twice or never. *(160 lines)*
 - `economy-inflation-analytics` - Use when prices drift and nobody can prove why. *(160 lines)*
 - `encoding-crlf-ansi-guard` - Use when Pawn sources pick up CRLF, BOM or ANSI. *(158 lines)*
 - `exterior-world-lod-drawdistance` - Use when exteriors flicker or vanish at distance. *(133 lines)*
@@ -150,7 +150,7 @@
 - `runtime-error-19-plugin-fix` - Use when a script dies with run time error 19. *(107 lines)*
 - `runtime-error-4-bounds-check` - Use when error 4 kills the script on one bad index. *(144 lines)*
 - `samp-dev-router` - Use when SA-MP work needs the right skill routed. *(128 lines)*
-- `samp-map-editor-pipelines` - Use when map editor output must become streamed server code. *(147 lines)*
+- `samp-map-editor-pipelines` - Use when map editor output must become streamed code. *(147 lines)*
 - `samp-model-selection-ui` - Use when a skin or vehicle picker needs real previews. *(159 lines)*
 - `samp-skill-authoring` - Use when a samp skill must pass the pack gates. *(149 lines)*
 - `samp-third-party-anticheat-integration` - Use when a second anticheat must not double-ban. *(160 lines)*
@@ -162,21 +162,21 @@
 - `sql-injection-escape-audit` - Use when user text reaches a SQL string in Pawn. *(157 lines)*
 - `sqlite-local-db-patterns` - Use when one node needs persistence without a DB daemon. *(160 lines)*
 - `state-machine-player-fsm` - Use when player state is spread across loose booleans. *(138 lines)*
-- `stress-test-bot-simulation` - Use when a release needs proof it survives 100+ players. *(133 lines)*
+- `stress-test-bot-simulation` - Use when a release needs 100+ player bot load proof. *(133 lines)*
 - `survival-vitals-hunger-infection` - Use when hunger, thirst or infection drift and pile up. *(160 lines)*
 - `tablist-headers-formatting` - Use when the TAB list header or name rows look wrong. *(158 lines)*
 - `teleport-airbreak-detection` - Use when players teleport or fly across the map. *(159 lines)*
-- `textdraw-clickable-hitbox-math` - Use when TextDraw clicks land in the wrong place. *(112 lines)*
+- `textdraw-clickable-hitbox-math` - Use when TextDraw clicks or taps land in wrong place. *(112 lines)*
 - `textdraw-color-gradient-palettes` - Use when HUD colours fail contrast or gradients band. *(159 lines)*
 - `textdraw-limit-2048-optimizer` - Use when the TextDraw pool runs near 2048 or 256. *(144 lines)*
-- `textdraw-preview-model-3d-rigging` - Use when model previews render blank or wrong. *(160 lines)*
+- `textdraw-preview-model-3d-rigging` - Use when TextDraw 3D model previews render wrong. *(160 lines)*
 - `textdraw-radial-wheel-menu` - Use when slices of a radial TextDraw menu miss. *(160 lines)*
 - `textdraw-scrollbar-list-grid` - Use when a TextDraw list needs scrolling rows. *(158 lines)*
 - `textdraw-txd-sprite-atlas-guide` - Use when HUD icons come from TXD sprites, not models. *(157 lines)*
 - `textdraw-widescreen-mobile-scaling` - Use when a HUD clips on ultrawide or phone screens. *(148 lines)*
 - `textdraw-zorder-layer-stacking` - Use when a panel's text hides behind its own background. *(160 lines)*
 - `texture-studio-export-optimizer` - Use when a Texture Studio export is bloated or slow. *(127 lines)*
-- `transaction-rollback-economy` - Use when concurrent writes duplicate or lose money. *(160 lines)*
+- `transaction-rollback-economy` - Use when concurrent writes duplicate or lose money. *(162 lines)*
 - `ufw-ddos-raknet-mitigation` - Use when UDP floods keep dropping the server. *(159 lines)*
 - `vehicle-damage-part-sync` - Use when panel, door or tyre damage is lost on respawn. *(146 lines)*
 - `vehicle-data-persistence` - Use when vehicles reset or duplicate after restart. *(160 lines)*
@@ -193,8 +193,8 @@
 
 ## SA-MP client (C++) (3)
 
-- `samp-client-menu-rpc-handling` - Use when server menus never open or select wrong row. *(135 lines)*
-- `samp-client-object-entity-lifecycle` - Use when server objects are tracked but not drawn. *(124 lines)*
+- `samp-client-menu-rpc-handling` - Use when ShowMenu RPC never opens or picks wrong row. *(135 lines)*
+- `samp-client-object-entity-lifecycle` - Use when CreateObject RPC arrives but objects never draw. *(124 lines)*
 - `samp-client-rpc-handler-registry` - Use when adding a client RPC handler without collisions. *(134 lines)*
 
 ## Ops & delivery (8)
@@ -204,7 +204,7 @@
 - `docker-image-hardening` - Use when hardening a container image for production. *(151 lines)*
 - `feature-flags-rollout` - Use when flags gate releases or never get deleted. *(160 lines)*
 - `kafka-event-driven-consumers` - Use when Kafka consumers duplicate, stall or lag. *(159 lines)*
-- `load-testing-k6-budget` - Use when load tests pass but the SLO regresses. *(160 lines)*
+- `load-testing-k6-budget` - Use when k6 tests pass but p99 or SLO regresses. *(162 lines)*
 - `observability-instrumentation` - Use when alerts fire late or traces break at a hop. *(160 lines)*
 - `warehouse-modeling-dbt` - Use when a dbt model must scale without full refreshes. *(170 lines)*
 

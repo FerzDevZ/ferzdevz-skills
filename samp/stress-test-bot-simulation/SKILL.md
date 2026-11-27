@@ -1,6 +1,6 @@
 ---
 name: stress-test-bot-simulation
-description: Use when a release needs proof it survives 100+ players.
+description: Use when a release needs 100+ player bot load proof.
 version: "2026.1.0"
 metadata:
   hermes:

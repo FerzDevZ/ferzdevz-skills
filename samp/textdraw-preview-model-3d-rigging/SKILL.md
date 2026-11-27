@@ -1,6 +1,6 @@
 ---
 name: textdraw-preview-model-3d-rigging
-description: Use when model previews render blank or wrong.
+description: Use when TextDraw 3D model previews render wrong.
 version: "2026.1.0"
 metadata:
   hermes:

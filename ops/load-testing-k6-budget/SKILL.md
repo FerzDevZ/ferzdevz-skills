@@ -1,6 +1,6 @@
 ---
 name: load-testing-k6-budget
-description: Use when load tests pass but the SLO regresses.
+description: Use when k6 load tests pass but production p99 or SLO still regresses.
 version: "2026.1.0"
 metadata:
   hermes:
@@ -17,6 +17,8 @@ thresholds from the SLO, split the workload into ramp/steady/spike, and prove wh
 side of the wire is saturated after every run.
 
 ## When to Use
+
+- k6 load tests look green but production p99 latency blows past the SLO budget.
 
 - You must decide whether a release is performance-safe before a traffic event.
 - A test passes but p99 in production is 4x the p95 the test reports.

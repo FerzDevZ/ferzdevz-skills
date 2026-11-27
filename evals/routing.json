@@ -194,7 +194,7 @@
    "expect": "teleport-airbreak-detection"
   },
   {
-   "prompt": "Server objects are created but never drawn for players",
+   "prompt": "A streamed map loads on the server but half the objects never appear for players",
    "expect": "dynamic-object-map-loader"
   },
   {
@@ -211,6 +211,18 @@
   },
   {
    "prompt": "Adding a new server RPC handler to the Android client, afraid of id collisions",
+   "expect": "samp-client-rpc-handler-registry"
+  },
+  {
+   "prompt": "CreateObject RPC arrives on the Android client but the object never appears in the 3D world",
+   "expect": "samp-client-object-entity-lifecycle"
+  },
+  {
+   "prompt": "ShowMenu RPC id 77 reaches the SA-MP Android client but no menu is drawn on screen",
+   "expect": "samp-client-menu-rpc-handling"
+  },
+  {
+   "prompt": "I need to register a new RakNet RPC handler in the SA-MP client without clashing with existing ids",
    "expect": "samp-client-rpc-handler-registry"
   }
  ]

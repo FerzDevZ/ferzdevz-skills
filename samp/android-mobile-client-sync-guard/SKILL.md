@@ -1,6 +1,6 @@
 ---
 name: android-mobile-client-sync-guard
-description: Use when mobile clients desync or burst after alt-tab.
+description: Use when mobile SA-MP clients desync after alt-tab.
 version: "2026.1.0"
 metadata:
   hermes:

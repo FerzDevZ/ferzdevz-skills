@@ -1,6 +1,6 @@
 ---
 name: dynamic-object-map-loader
-description: Use when a 10k-object map stalls start-up or half-loads.
+description: Use when streamed map objects half-load or never appear.
 version: "2026.1.0"
 metadata:
   hermes:
@@ -11,6 +11,8 @@ metadata:
 # Load a large object map in ticks, then prove the count
 
 ## When to Use
+
+- A streamed map loads on the server but half the objects never appear for players.
 
 - `OnGameModeInit` blocks for seconds or minutes while thousands of objects are created.
 - The map is partly missing after a restart, with no error in the log.

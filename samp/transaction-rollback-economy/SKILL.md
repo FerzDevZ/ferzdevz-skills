@@ -1,6 +1,6 @@
 ---
 name: transaction-rollback-economy
-description: Use when concurrent writes duplicate or lose money.
+description: Use when concurrent writes duplicate or lose money during transfers, purchases, or job payouts at the same time.
 version: "2026.1.0"
 metadata:
   hermes:
@@ -17,6 +17,8 @@ land on two connections. Use one guarded multi-statement batch per operation,
 opened with `ROLLBACK;` so a failed batch cannot leak an open transaction.
 
 ## When to Use
+
+- Money is duplicated or lost when two players transfer at the same time.
 
 - A purchase, transfer, job payout or fine must debit and record together.
 - Money vanished or doubled after a timeout, a crash, or a reconnect.

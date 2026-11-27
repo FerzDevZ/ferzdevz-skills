@@ -1,6 +1,6 @@
 ---
 name: samp-map-editor-pipelines
-description: Use when map editor output must become streamed server code.
+description: Use when map editor output must become streamed code.
 version: "2026.1.0"
 metadata:
   hermes:

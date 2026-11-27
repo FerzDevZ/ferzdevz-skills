@@ -1,6 +1,6 @@
 ---
 name: dynamic-zone-area-triggers
-description: Use when area entry fires twice or never fires.
+description: Use when streamer area callbacks fire twice or never.
 version: "2026.1.0"
 metadata:
   hermes:
