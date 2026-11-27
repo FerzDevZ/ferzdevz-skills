@@ -1,6 +1,6 @@
 ---
 name: prompt-injection-defense
-description: Use when a retrieved PDF tells the model to call a tool or follow hidden instructions.
+description: Use when retrieved docs inject hidden tool instructions.
 version: "2026.1.0"
 metadata:
   hermes:

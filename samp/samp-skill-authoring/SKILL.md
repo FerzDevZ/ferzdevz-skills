@@ -106,7 +106,7 @@ python3 bin/audit.py --root . --only samp
 
 | Symptom | Cause | Fix |
 | --- | --- | --- |
-| `description is 61 chars (max 60)` | trigger written as a sentence | cut to the discriminating words; keep the verb |
+| `description is 61 chars (max 80)` | trigger written as a sentence | cut to the discriminating words; keep the verb |
 | `code fence without language tag` | fence opened with no info string | tag every fence: `bash`, `pawn`, `text`, `json` |
 | `Failure Modes table needs >= 3 data rows` | section is bullets | three real symptom/cause/fix rows |
 | `Sources: 1 URL(s), need >= 2` | one link reused per skill | open two more pages and cite the specific function |

@@ -1,6 +1,6 @@
 ---
 name: i18n-l10n-web
-description: Use when concatenated strings break German or Arabic layouts and i18n fails.
+description: Use when concatenated strings break i18n layouts.
 version: "2026.1.0"
 metadata:
   hermes:

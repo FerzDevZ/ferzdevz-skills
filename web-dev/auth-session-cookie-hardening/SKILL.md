@@ -1,6 +1,6 @@
 ---
 name: auth-session-cookie-hardening
-description: Use when users get logged out after a tab switch and CSRF tokens keep expiring.
+description: Use when tab switch logs out or CSRF tokens expire.
 version: "2026.1.0"
 metadata:
   hermes:

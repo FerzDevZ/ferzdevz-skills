@@ -1,6 +1,6 @@
 ---
 name: design-tokens-dtcg-pipeline
-description: Use when spacing or colour tokens drift apart across platforms after a design change.
+description: Use when design tokens drift across platforms after changes.
 version: "2026.1.0"
 metadata:
   hermes:

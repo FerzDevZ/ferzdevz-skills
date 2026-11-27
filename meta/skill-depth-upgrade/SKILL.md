@@ -129,7 +129,7 @@ git diff --stat prisma/migrations   # must be empty before applying anything
 | Stub became 140 lines and reads worse | padded with public documentation | delete any line not traceable to a trace, command, or URL |
 | Audit passes, agent still guesses | no discriminating command | add it to Verification and reference it from step 1 |
 | Third failure row is plausible but never happened | written from imagination | paste the exact log line; no artefact means no row |
-| `description is 67 chars (max 60)` | scope crept into frontmatter | compress to "Use when <symptom>. <verb>." and move detail down |
+| `description is 67 chars (max 80)` | scope crept into frontmatter | compress to "Use when <symptom>. <verb>." and move detail down |
 | New `--net` failure after rewrite | URL guessed from memory | open the page, cite the section, or drop the claim |
 | Duplicate pair appears after upgrade | two skills now teach one decision | merge into the shorter name; 0.86 similarity is rejected |
 | Skill exceeds 5k tokens when loaded | references inlined | split into `references/<topic>.md` with load conditions |

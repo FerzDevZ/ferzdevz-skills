@@ -1,6 +1,6 @@
 ---
 name: money-duplication-prevention
-description: Use when balances grow without a matching ledger row.
+description: Use when balances grow with no matching ledger row.
 version: "2026.1.0"
 metadata:
   hermes:

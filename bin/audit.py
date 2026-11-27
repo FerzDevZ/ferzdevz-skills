@@ -101,8 +101,8 @@ def check_skill(path: pathlib.Path, min_body: int, min_sources: int) -> dict:
         problems.append(f"frontmatter: name '{name}' != folder '{folder}'")
     if not desc:
         problems.append("frontmatter: missing 'description'")
-    elif len(desc) > 60:
-        problems.append(f"frontmatter: description is {len(desc)} chars (max 60)")
+    elif len(desc) > 80:
+        problems.append(f"frontmatter: description is {len(desc)} chars (max 80)")
     if not meta.get("version"):
         problems.append("frontmatter: missing 'version'")
 

@@ -1,6 +1,6 @@
 ---
 name: load-testing-k6-budget
-description: Use when k6 load tests pass but production p99 or SLO still regresses.
+description: Use when load tests pass but prod p99/SLO regresses.
 version: "2026.1.0"
 metadata:
   hermes:

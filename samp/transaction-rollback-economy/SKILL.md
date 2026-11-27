@@ -1,6 +1,6 @@
 ---
 name: transaction-rollback-economy
-description: Use when concurrent writes duplicate or lose money during transfers, purchases, or job payouts at the same time.
+description: Use when two players transfer and money dupes or vanishes.
 version: "2026.1.0"
 metadata:
   hermes:

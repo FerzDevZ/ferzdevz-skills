@@ -1,6 +1,6 @@
 ---
 name: dependency-supply-chain-security
-description: Use when CI runs tests before linting, or a merge includes known vulnerabilities without gate checks.
+description: Use when CI merges deps with known vulns, no gate.
 version: "2026.1.0"
 metadata:
   hermes:
